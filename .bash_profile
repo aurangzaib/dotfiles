@@ -2,7 +2,7 @@
 export PATH="$HOME/bin:$PATH";
 
 # Android setup
-export ANDROID_HOME="location/android-sdk-linux"
+export ANDROID_HOME="Library/Android/sdk/" # for OSX & a/f installing Android Studio
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
@@ -10,6 +10,7 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="/usr/local/bin:$PATH"
 
 # JRE and JDK
+# after installing jdk & jre from oracle site
 export JAVA_HOME=$(/usr/libexec/java_home)
 export JDK_HOME=$(/usr/libexec/java_home)
 
