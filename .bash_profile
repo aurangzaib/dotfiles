@@ -2,16 +2,16 @@
 export PATH="$HOME/bin:$PATH";
 
 # Android setup
-echo 'export ANDROID_HOME="location/android-sdk-linux"' >> ~/.profile
-echo 'export PATH="$PATH:$ANDROID_HOME/tools"' >> ~/.profile
-echo 'export PATH="$PATH:$ANDROID_HOME/platform-tools"' >> ~/.profile
+'export ANDROID_HOME="location/android-sdk-linux"' >> ~/.profile
+'export PATH="$PATH:$ANDROID_HOME/tools"' >> ~/.profile
+'export PATH="$PATH:$ANDROID_HOME/platform-tools"' >> ~/.profile
 
 # usr/local
-echo export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 # JRE and JDK
-echo export JAVA_HOME=$(/usr/libexec/java_home)
-echo export JDK_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=$(/usr/libexec/java_home)
+export JDK_HOME=$(/usr/libexec/java_home)
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
