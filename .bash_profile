@@ -2,9 +2,9 @@
 export PATH="$HOME/bin:$PATH";
 
 # Android setup
-'export ANDROID_HOME="location/android-sdk-linux"' >> ~/.profile
-'export PATH="$PATH:$ANDROID_HOME/tools"' >> ~/.profile
-'export PATH="$PATH:$ANDROID_HOME/platform-tools"' >> ~/.profile
+export ANDROID_HOME="location/android-sdk-linux"
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 # usr/local
 export PATH="/usr/local/bin:$PATH"
