@@ -14,8 +14,14 @@ alias p="cd ~/projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
-alias bash-update="set -- -f; source bootstrap.sh"
+alias symbolic-link="ln -s"
+
+# Android apk install in bulk
 alias apps-installer="bash .apk-install.sh"
+
+# automate copy and source .bash_profile in dotfile
+alias bash-update="source .bash_profile"
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"

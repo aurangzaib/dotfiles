@@ -2,9 +2,9 @@
 export PATH="$HOME/bin:$PATH";
 
 # Android setup
-export ANDROID_HOME="Library/Android/sdk/" # for OSX & a/f installing Android Studio
-export PATH="$PATH:$ANDROID_HOME/tools"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export ANDROID_HOME="/Users/aurangzaib/Library/Android/sdk/" #for OSX && a/f installing Android Studio
+export PATH="$PATH:$ANDROID_HOME/tools" # android tools
+export PATH="$PATH:$ANDROID_HOME/platform-tools" # android platform tools
 
 # usr/local
 export PATH="/usr/local/bin:$PATH"
