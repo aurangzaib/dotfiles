@@ -87,7 +87,8 @@ brew install speedtest_cli
 brew install tree
 brew install webkit2png
 brew install zopfli
-
+brew install ant
+brew install android-platform-tools
 # Install Node.js. Note: this installs `npm` too, using the recommended
 # installation method.
 brew install node
