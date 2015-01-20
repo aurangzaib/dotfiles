@@ -16,6 +16,7 @@ alias h="history"
 alias j="jobs"
 alias symbolic-link="ln -s"
 alias git-cred="git config --global credential.helper osxkeychain"
+alias s="status"
 
 # Android apk install in bulk
 alias apps-installer="bash .apk-install.sh"
