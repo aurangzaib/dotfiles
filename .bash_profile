@@ -6,6 +6,9 @@ export ANDROID_HOME="/Users/aurangzaib/Library/Android/sdk/" #for OSX && a/f ins
 export PATH="$PATH:$ANDROID_HOME/tools" # android tools
 export PATH="$PATH:$ANDROID_HOME/platform-tools" # android platform tools
 
+# mongodb
+export PATH="/usr/local/mongodb/bin:$PATH"
+
 # usr/local
 export PATH="/usr/local/bin:$PATH"
 
@@ -61,4 +64,4 @@ complete -W "NSGlobalDomain" defaults;
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
 # Link sublime text 
-ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/.
+# ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/.

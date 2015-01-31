@@ -5,6 +5,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
+alias prj="cd /Volumes/Data/Projects/"
 
 # Shortcuts
 alias d="cd ~/Documents"
@@ -14,9 +15,7 @@ alias p="cd ~/projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
-alias symbolic-link="ln -s"
 alias git-cred="git config --global credential.helper osxkeychain"
-alias s="status"
 
 # Android apk install in bulk
 alias apps-installer="bash .apk-install.sh"
