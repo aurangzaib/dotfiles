@@ -6,8 +6,10 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 alias prj="cd /Volumes/Data/Projects/"
+alias socxsdir="prj && cd socxs"
 alias fdep="firebase deploy"
-
+alias k-t="grunt karma"
+alias headless-browser-install="npm install karma-phantomjs-launcher"
 # Shortcuts
 alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
@@ -96,7 +98,7 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
-
+alias trashclean="emptytrash"
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
