@@ -20,7 +20,7 @@ alias git-cred="git config --global credential.helper osxkeychain"
 alias git-line-ending="git config --global core.autocrlf input"
 
 # automate copy and source .bash_profile in dotfile
-alias bash-update="source .bash_profile"
+alias bash-update="cd && source .bash_profile"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -146,3 +146,15 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
+
+# Restart Apache
+alias apache-rstrt="sudo apachectl restart"
+
+# Start Apache
+alias apache-strt="sudo apachectl start"
+
+# Apache Stop
+alias apache-stp="sudo apachectl stop"
+
+# ghangor grunt server
+alias ghngr-server="cd /Volumes/Data/Project/c4i/ise-c4i/src/main/webapp/ && grunt serve"
