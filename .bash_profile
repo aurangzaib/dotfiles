@@ -9,6 +9,9 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools" # android platform tools
 # mongodb
 export PATH="/usr/local/mongodb/bin:$PATH"
 
+# xampp
+export PATH=/opt/local/bin:/opt/local/sbin:/Applications/xampp/xamppfiles/bin:$PATH
+
 # usr/local
 export PATH="/usr/local/bin:$PATH"
 
