@@ -174,4 +174,6 @@ alias csc-apk-install="adb install -r /Users/aurangzaib/Documents/Projects/cisco
 alias csc-apk-build="cd /Users/aurangzaib/Documents/Projects/cisco-support && ionic build android"
 
 #ecare vault app
-alias ecare-ts="cd ~/Documents/Projects/eCareVault && gulp generate-ts"
+alias ecare-dir="cd ~/Documents/Projects/eCareVault"
+alias cjs="cd ~/Documents/Projects/eCareVault && gulp clean-js"
+alias mjs="cd ~/Documents/Projects/eCareVault && cjs && gulp make-js"
