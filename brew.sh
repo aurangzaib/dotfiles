@@ -93,5 +93,9 @@ brew install android-platform-tools
 # installation method.
 #brew install node
 
+# cask
+brew install caskroom/cask/brew-cask
+brew cask install skype
+
 # Remove outdated versions from the cellar.
 brew cleanup
