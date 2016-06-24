@@ -178,7 +178,7 @@ alias sxdir="cd $socxs_directory_path"
 alias sxe2e="sxdir && cd socxs.app/test && protractor protractor.conf.js"
 alias sxunit="sxdir && cd socxs.app/test && k-t"
 alias k-t="grunt karma"
-alias headless-browser-install="npm install karma-phantomjs-launcher"
+alias install-headless-browser="npm install karma-phantomjs-launcher"
 
 # ghangor frontend app
 ghngr_webapp_path="/Volumes/Data/Project/Ghangor-Client/c4i/ise-c4i/src/main/webapp/"
