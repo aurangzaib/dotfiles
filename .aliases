@@ -188,3 +188,7 @@ alias ghngr-frontend="cd $ghngr_webapp_path && grunt serve"
 ghngr_directory_path="/Volumes/Data/Project/Ghangor-Client/c4i/ise-c4i"
 alias ghngr-mvn="cd $ghngr_directory_path && mvn spring-boot:run"
 alias ghngr-backend="xmp-strt && ghngr-mvn"
+
+# Tomcat
+alias tomcat-start="/Library/Tomcat/bin/startup.sh"
+alias tomcat-stop="/Library/Tomcat/bin/shutdown.sh"
