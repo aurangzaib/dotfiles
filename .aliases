@@ -192,3 +192,20 @@ alias ghngr-backend="xmp-strt && ghngr-mvn"
 # Tomcat
 alias tomcat-start="/Library/Tomcat/bin/startup.sh"
 alias tomcat-stop="/Library/Tomcat/bin/shutdown.sh"
+
+# certo cloud server
+alias certo-openshift-ssh="ssh 554e1ff3fcf9331a43000158@api-certocloud.rhcloud.com"
+alias certo-dir-server="prjdir && cd certo-clav/server"
+alias certo-dir-client="prjdir && cd certo-clav/client"
+alias certo-log="rhc tail -a api"
+alias certo-server="certo-dir-server && nodemon server.js 3000"
+alias certo-client="certo-dir-client && python -m SimpleHTTPServer 9000"
+alias certo-restart-server="rhc app-force-stop api && rhc app-start api"
+alias certo-clone-client="git clone ssh://554e1ff3fcf9331a43000158@api-certocloud.rhcloud.com/~/git/api.git/"
+alias certo-clone-server="git clone ssh://554e0cb7e0b8cde7be00010b@ng-certocloud.rhcloud.com/~/git/ng.git/"
+
+# listnride
+alias lnride="prjdir && cd listnride"
+
+# python server
+alias pserver="python -m SimpleHTTPServer"
