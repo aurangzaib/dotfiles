@@ -205,7 +205,20 @@ alias certo-clone-client="git clone ssh://554e1ff3fcf9331a43000158@api-certoclou
 alias certo-clone-server="git clone ssh://554e0cb7e0b8cde7be00010b@ng-certocloud.rhcloud.com/~/git/ng.git/"
 
 # listnride
-alias lnride="prjdir && cd listnride"
+alias lnride="cd ~/Documents/Projects/listnride/listnride-frontend/listnride"
 
 # python server
 alias pserver="python -m SimpleHTTPServer"
+
+# master project directory
+alias msprjdir="cd Documents/Hochschule/Winter\ 2016/Projects/Master\ Project/" 
+
+# enmacc web
+alias enmacc-web="prjdir && cd enmacc/enmacc-web/"
+alias enmacc-e2e="prjdir && cd enmacc/enmacc-web && protractor protractor.conf.js"
+
+# ssh raspi home
+alias pi-home="ssh pi@192.168.2.103"
+
+# backup raspi
+alias rpibackup="bash .rpibackup.sh"
