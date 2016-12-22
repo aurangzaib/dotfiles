@@ -155,7 +155,7 @@ alias xampp="sudo xampp"
 alias xmp-strt="xampp startapache && xampp startmysql && xampp startftp && ghngr-mvn"
 
 #project folder
-project_directory_path="/Users/aurangzaib/Documents/Projects/"
+project_directory_path="/Users/siddiqui/Documents/Projects/"
 alias prjdir="cd $project_directory_path"
 
 #cisco ionic app
