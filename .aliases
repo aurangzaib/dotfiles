@@ -14,7 +14,7 @@ alias git-cred="git config --global credential.helper osxkeychain"
 alias git-line-ending="git config --global core.autocrlf input"
 
 # automate copy and source .bash_profile in dotfile
-alias bash-update="cd && source .bash_profile"
+alias bash-update="cd && source $ZSH/oh-my-zsh.sh"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
