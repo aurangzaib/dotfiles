@@ -222,3 +222,6 @@ alias pi-home="ssh pi@192.168.2.103"
 
 # backup raspi
 alias rpibackup="bash .rpibackup.sh"
+
+# open dotfiles in VSCode
+alias opendt="code dotfiles"
