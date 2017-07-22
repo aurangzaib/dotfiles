@@ -14,7 +14,7 @@ alias git-cred="git config --global credential.helper osxkeychain"
 alias git-line-ending="git config --global core.autocrlf input"
 
 # automate copy and source .bash_profile in dotfile
-alias bash-update="cd && source $ZSH/oh-my-zsh.sh"
+alias bash-update="cd && source .bash_profile"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -205,17 +205,18 @@ alias certo-clone-client="git clone ssh://554e1ff3fcf9331a43000158@api-certoclou
 alias certo-clone-server="git clone ssh://554e0cb7e0b8cde7be00010b@ng-certocloud.rhcloud.com/~/git/ng.git/"
 
 # listnride
-alias lnride="cd ~/Documents/Projects/listnride/listnride-frontend/listnride"
+alias listnride="cd ~/Documents/Projects/listnride/listnride-frontend/listnride"
 
 # python server
 alias pserver="python -m SimpleHTTPServer"
 
 # master project directory
-alias msprjdir="cd Documents/Hochschule/Winter\ 2016/Projects/Master\ Project/" 
+alias msprjdir="cd Documents/Projects/master-project/" 
 
 # enmacc web
 alias enmacc-web="prjdir && cd enmacc/enmacc-web/"
 alias enmacc-e2e="prjdir && cd enmacc/enmacc-web && protractor protractor.conf.js"
+alias enmacc-e2e-loop="cd && bash .enmacc-run-tests"
 
 # ssh raspi home
 alias pi-home="ssh pi@192.168.2.103"
@@ -224,4 +225,19 @@ alias pi-home="ssh pi@192.168.2.103"
 alias rpibackup="bash .rpibackup.sh"
 
 # open dotfiles in VSCode
-alias opendt="code dotfiles"
+alias opendt="code-insiders dotfiles"
+
+# open vscode with gpu
+alias code="code --force-gpu-rasterization"
+alias codeinsiders="code-insiders --force-gpu-rasterization"
+
+# activate anaconda python environment
+alias sa="source activate"
+alias sad="sa selfdrive"
+alias p2="source activate python_2"
+alias p3="source activate selfdrive"
+alias sdc="prjdir && cd self-drive"
+
+alias udacity-simulator="open ~/Documents/Projects/self-drive/CarND-Behavioral-Cloning-P3/mac_sim.app"
+alias udacity-server="cd ~/Documents/Projects/self-drive/CarND-Behavioral-Cloning-P3 && python drive.py"
+alias pdf-merge="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"

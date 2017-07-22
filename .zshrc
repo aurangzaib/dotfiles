@@ -2,6 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
 
+# android-adb-tools
+export PATH="/usr/local/Cellar/android-platform-tools:$PATH"
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/siddiqui/.oh-my-zsh
 
@@ -93,7 +96,14 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey '  ' autosuggest-execute
+bindkey '^ ' autosuggest-accept
 for file in ~/.{exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
+
+# Virtualenv/VirtualenvWrapper
+source /usr/local/bin/virtualenvwrapper.sh
+
+# smooth aliasing java
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'

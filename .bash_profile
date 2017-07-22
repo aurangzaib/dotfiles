@@ -6,6 +6,9 @@ export ANDROID_HOME="/Users/aurangzaib/Library/Android/sdk/" #for OSX && a/f ins
 export PATH="$PATH:$ANDROID_HOME/tools" # android tools
 export PATH="$PATH:$ANDROID_HOME/platform-tools" # android platform tools
 
+# make
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/usr/bin/c++:/usr/bin/make
+
 # mongodb
 export PATH="/usr/local/mongodb/bin:$PATH"
 
@@ -72,3 +75,8 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+# anaconda python 3
+export PATH="/Users/siddiqui/anaconda/envs/selfdrive/bin:$PATH"
+export PATH="/usr/local/opt/opencv3/bin:$PATH"
+source activate selfdrive
