@@ -211,7 +211,7 @@ alias listnride="cd ~/Documents/Projects/listnride/listnride-frontend/listnride"
 alias pserver="python -m SimpleHTTPServer"
 
 # master project directory
-alias msprjdir="cd Documents/Projects/master-project/" 
+alias msprjdir="cd Documents/Projects/master-project/"
 
 # enmacc web
 alias enmacc-web="prjdir && cd enmacc/enmacc-web/"
@@ -228,14 +228,14 @@ alias rpibackup="bash .rpibackup.sh"
 alias opendt="code-insiders dotfiles"
 
 # open vscode with gpu
-alias code="code --force-gpu-rasterization"
-alias codeinsiders="code-insiders --force-gpu-rasterization"
+alias code="code --force-gpu-rasterization -r"
+alias codeinsiders="code-insiders --force-gpu-rasterization -r"
 
 # activate anaconda python environment
 alias sa="source activate"
-alias sad="sa selfdrive"
-alias p2="source activate python_2"
-alias p3="source activate selfdrive"
+alias sad="sa carnd-term1"
+alias p2="sa python_2"
+alias p3="sa carnd-term1"
 alias sdc="prjdir && cd self-drive"
 
 alias udacity-simulator="open ~/Documents/Projects/self-drive/CarND-Behavioral-Cloning-P3/mac_sim.app"
