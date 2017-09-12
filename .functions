@@ -252,3 +252,9 @@ function o() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+# open chrome
+chrome () {
+    open -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+  }
+
