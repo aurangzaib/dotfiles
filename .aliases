@@ -243,3 +243,6 @@ alias udacity-simulator="open ~/Documents/Projects/self-drive/CarND-Behavioral-C
 alias udacity-server="cd ~/Documents/Projects/self-drive/CarND-Behavioral-Cloning-P3 && python drive.py"
 alias pdf-merge="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
 alias ytm="youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --audio-quality 0 --embed-thumbnail"
+
+# update node packages
+alias npm-update="ncu -u"

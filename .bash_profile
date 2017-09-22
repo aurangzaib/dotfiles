@@ -53,6 +53,7 @@ done;
 # elif [ -f /etc/bash_completion ]; then
 # 	source /etc/bash_completion;
 # fi;
+
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 . $(brew --prefix)/etc/bash_completion
 fi
@@ -88,3 +89,6 @@ source activate carnd-term1
 # added by Miniconda3 4.3.21 installer
 # not needed. already using carnd-term1 python
 # export PATH="/Users/siddiqui/miniconda3/bin:$PATH"
+
+# added by Miniconda3 4.3.21 installer
+export PATH="/Users/siddiqui/miniconda3/bin:$PATH"
