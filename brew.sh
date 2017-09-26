@@ -16,6 +16,9 @@ brew upgrade
 # common tools
 brew install make wget convertlit imagemagick boost
 
+# Ruby 
+brew install ruby
+
 # Tapping branches of brew
 brew tap homebrew/science
 brew tap caskroom/cask
