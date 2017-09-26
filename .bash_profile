@@ -85,10 +85,3 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/Users/siddiqui/miniconda3/envs/carnd-term1/bin:$PATH"
 export PATH="/usr/local/opt/opencv3/bin:$PATH"
 source activate carnd-term1
-
-# added by Miniconda3 4.3.21 installer
-# not needed. already using carnd-term1 python
-# export PATH="/Users/siddiqui/miniconda3/bin:$PATH"
-
-# added by Miniconda3 4.3.21 installer
-export PATH="/Users/siddiqui/miniconda3/bin:$PATH"
