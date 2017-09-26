@@ -150,10 +150,6 @@ alias apache-stp="sudo apachectl stop"
 alias xampp="sudo xampp"
 alias xmp-strt="xampp startapache && xampp startmysql && xampp startftp && ghngr-mvn"
 
-#project folder
-project_directory_path="/Users/siddiqui/Documents/Projects/"
-alias prjdir="cd $project_directory_path"
-
 #cisco ionic app
 csc_directory_path="/Users/aurangzaib/Documents/Projects/cisco-support"
 csc_android_path="$csc_directory_path/platforms/android/build/outputs/apk/android-debug.apk"
@@ -200,14 +196,16 @@ alias certo-restart-server="rhc app-force-stop api && rhc app-start api"
 alias certo-clone-client="git clone ssh://554e1ff3fcf9331a43000158@api-certocloud.rhcloud.com/~/git/api.git/"
 alias certo-clone-server="git clone ssh://554e0cb7e0b8cde7be00010b@ng-certocloud.rhcloud.com/~/git/ng.git/"
 
-# listnride
-alias listnride="cd ~/Documents/Projects/listnride/listnride-frontend/listnride"
+# master project directory
+alias msprjdir="cd Documents/Projects/master-project/"
 
 # python server
 alias pserver="python -m SimpleHTTPServer"
 
-# master project directory
-alias msprjdir="cd Documents/Projects/master-project/"
+# enmacc web
+alias enmacc-web="prjdir && cd enmacc/enmacc-web/"
+alias enmacc-e2e="prjdir && cd enmacc/enmacc-web && protractor protractor.conf.js"
+alias enmacc-e2e-loop="cd && bash .enmacc-run-tests"
 
 # enmacc web
 alias enmacc-web="prjdir && cd enmacc/enmacc-web/"
@@ -220,13 +218,6 @@ alias pi-home="ssh pi@192.168.2.103"
 # backup raspi
 alias rpibackup="bash .rpibackup.sh"
 
-# open dotfiles in VSCode
-alias opendt="code-insiders dotfiles"
-
-# open vscode with gpu
-alias code="code --force-gpu-rasterization -r"
-alias codeinsiders="code-insiders --force-gpu-rasterization -r"
-
 # activate anaconda python environment
 alias sa="source activate"
 alias sad="sa carnd-term1"
@@ -236,12 +227,3 @@ alias sdc="prjdir && cd self-drive"
 
 alias udacity-simulator="open ~/Documents/Projects/self-drive/CarND-Behavioral-Cloning-P3/mac_sim.app"
 alias udacity-server="cd ~/Documents/Projects/self-drive/CarND-Behavioral-Cloning-P3 && python drive.py"
-alias pdf-merge="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
-alias ytm="youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --audio-quality 0 --embed-thumbnail"
-
-# update node packages
-alias npm-update="ncu -u"
-
-# install npm global packages
-npmg="sudo npm install -g"
-alias npm-packages="npmg typescript; npmg eslint; npmg gulp; npmg ncu"

@@ -1,0 +1,26 @@
+# update node packages
+alias npm-update="ncu -u"
+
+# install npm global packages
+npmg="sudo npm install -g"
+alias npm-packages="npmg typescript; npmg eslint; npmg gulp; npmg ncu"
+
+# merge pdf files
+alias pdf-merge="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
+
+# youtube to mp3
+alias ytm="youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --audio-quality 0 --embed-thumbnail"
+
+# open dotfiles in VSCode
+alias opendt="code-insiders dotfiles"
+
+# open vscode with gpu
+alias code="code --force-gpu-rasterization -r"
+alias codeinsiders="code-insiders --force-gpu-rasterization -r"
+
+#project folder
+project_directory_path="/Users/siddiqui/Documents/Projects/"
+alias prjdir="cd $project_directory_path"
+
+# listnride
+alias lnr="prjdir && cd listnride-frontend/"
