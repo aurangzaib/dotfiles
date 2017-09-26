@@ -16,28 +16,62 @@ brew upgrade
 # common tools
 brew install make wget convertlit imagemagick boost
 
-# opencv
+# Tapping branches of brew
 brew tap homebrew/science
+brew tap caskroom/cask
+brew install caskroom/cask/brew-cask
+
+# opencv
 brew install opencv3
+
+# Google Chrome
+brew cask install google-chrome
+
+# Sourcetree
+brew cask install sourcetree
+
+# Skype
+brew cask install skype
+
+# Jetbrains
+brew cask install clion
+brew cask install pycharm
+brew cask install webstorm
+
+# Visual Studio Code
+brew cask install visual-studio-code
+
+# Postman
+brew cask install postman
+
+# Shady
+brew cask install shady
+
+# Docker
+brew cask install docker
 
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
 sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+
 # ffmpeg to convert mp4 to mp3 etc
 brew install ffmpeg
+
 # download youtube videos
 brew install youtube-dl
 
 # Install some other useful utilities like `sponge`.
 brew install moreutils
+
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
+
 # Install GNU `sed`, overwriting the built-in `sed`.
 brew install gnu-sed --with-default-names
+
 # Install Bash 4.
-# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
-# running `chsh`.
+# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
 brew install bash
 brew install bash-completion
 
@@ -58,28 +92,14 @@ brew install homebrew/dupes/screen
 brew install homebrew/php/php55 --with-gmp
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
-#brew install bfg
 brew install binutils
-# brew install binwalk
-#brew install cifer
-# brew install dex2jar
-# brew install dns2tcp
-# brew install fcrackzip
-# brew install foremost
-# brew install hashpump
-# brew install hydra
-# brew install john
-# brew install knock
 brew install nmap
 brew install pngcheck
-# brew install socat
 brew install sqlmap
 # brew install tcpflow
 # brew install tcpreplay
-# brew install tcptrace
-# brew install ucspi-tcp # `tcpserver` etc.
+brew install tcptrace
 brew install xpdf
-# brew install xz
 
 # Install other useful binaries.
 #brew install ack
@@ -87,25 +107,14 @@ brew install xpdf
 brew install git
 brew install imagemagick --with-webp
 brew install lua
-# brew install lynx
 brew install p7zip
 brew install pigz
 brew install pv
 brew install rename
-# brew install rhino
 brew install speedtest_cli
 brew install tree
-#brew install webkit2png
-#brew install zopfli
 brew install ant
-brew install android-platform-tools
-# Install Node.js. Note: this installs `npm` too, using the recommended
-# installation method.
-#brew install node
-
-# cask
-brew install caskroom/cask/brew-cask
-brew cask install skype
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
