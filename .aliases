@@ -1,15 +1,11 @@
 alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias dt="cd ~/dotfiles"
 alias g="git"
 alias h="history"
 alias j="jobs"
 
-alias subl-symlink="mkdir -p ~/bin && ln -s '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' ~/bin/subl"
 alias atom-apps-installer="apm install minimap color-picker linter-jshint linter atom-beautify atom-typescript"
-alias android-apps-installer="bash .apk-install.sh"
-
 alias git-cred="git config --global credential.helper osxkeychain"
 alias git-line-ending="git config --global core.autocrlf input"
 
