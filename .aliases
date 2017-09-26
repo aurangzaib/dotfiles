@@ -241,3 +241,7 @@ alias ytm="youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --audio
 
 # update node packages
 alias npm-update="ncu -u"
+
+# install npm global packages
+npmg="sudo npm install -g"
+alias npm-packages="npmg typescript; npmg eslint; npmg gulp; npmg ncu"
