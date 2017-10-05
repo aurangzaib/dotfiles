@@ -126,8 +126,12 @@ brew install pigz
 brew install pv
 brew install rename
 brew install speedtest_cli
+brew install wifi-password
 brew install tree
 brew install ant
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+# Update Git Diff setup
+bash setup-git.sh

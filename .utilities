@@ -24,3 +24,42 @@ alias prjdir="cd $project_directory_path"
 
 # listnride
 alias lnr="prjdir && cd listnride-frontend/"
+
+# create a local timemachine backup
+alias backup="tmutil snapshot"
+
+# use ccat by default 
+alias cat=ccat
+
+# check battery status
+alias batterycheck="m battery status"
+
+# check the directory size
+ alias dirsize="m dir size"
+
+# eject all mountable drives
+alias ejectdrives="m disk ejectall"
+
+# get mac basic info
+alias macinfo="m info"
+
+# lock the screen
+alias lockscreen="m lock"
+
+# avoid sleeping the mac for specified time
+alias nosleep="m nosleep until"
+
+# restart the mac
+alias restartmac="m restart"
+
+# shutdown the mac
+alias shutdownmac="m shutdown"
+
+# set volume of the mac
+alias volumeset="m volume"
+
+# mute volume of the mac
+alias mutemac="m volume mute" 
+
+# update the bash profile
+alias bash-update="cd && source .bash_profile"
