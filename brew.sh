@@ -14,10 +14,7 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 # common tools
-brew install make wget convertlit imagemagick boost
-
-# Ruby 
-brew install ruby
+brew install make wget convertlit imagemagick boost ruby
 
 # Tapping branches of brew
 brew tap homebrew/science
@@ -67,6 +64,15 @@ brew install ffmpeg
 # download youtube videos
 brew install youtube-dl
 
+# Macdown -- Markdown tool for macOS
+brew cask install macdown
+
+# IIVA media player -- used instead of VLC
+brew cask install iina
+
+# ccat provides color schemes for cat in Terminal.app
+brew install ccat
+
 # Install some other useful utilities like `sponge`.
 brew install moreutils
 
@@ -95,7 +101,6 @@ brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
-brew install homebrew/php/php55 --with-gmp
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 brew install binutils
@@ -123,4 +128,3 @@ brew install ant
 
 # Remove outdated versions from the cellar.
 brew cleanup
-

@@ -225,5 +225,12 @@ alias p2="sa python_2"
 alias p3="sa carnd-term1"
 alias sdc="prjdir && cd self-drive"
 
+# udacity behaviour cloning project -- term 1
 alias udacity-simulator="open ~/Documents/Projects/self-drive/CarND-Behavioral-Cloning-P3/mac_sim.app"
 alias udacity-server="cd ~/Documents/Projects/self-drive/CarND-Behavioral-Cloning-P3 && python drive.py"
+
+# create a local timemachine backup
+alias backup="tmutil snapshot"
+
+# use ccat by default 
+alias cat=ccat
