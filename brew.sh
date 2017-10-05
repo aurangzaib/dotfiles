@@ -13,7 +13,8 @@ brew update
 
 # Upgrade any already-installed formulae.
 brew upgrade
-# common tools
+
+# Common tools
 brew install make wget convertlit imagemagick boost ruby
 
 # Tapping branches of brew
@@ -21,7 +22,7 @@ brew tap homebrew/science
 brew tap caskroom/cask
 brew install caskroom/cask/brew-cask
 
-# opencv
+# Opencv
 brew install opencv3
 
 # Google Chrome
@@ -53,11 +54,6 @@ brew cask install docker
 # Slack
 brew cask install slack
 
-# Install GNU core utilities (those that come with OS X are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
-
 # ffmpeg to convert mp4 to mp3 etc
 brew install ffmpeg
 
@@ -72,6 +68,12 @@ brew cask install iina
 
 # ccat provides color schemes for cat in Terminal.app
 brew install ccat
+
+# Install GNU core utilities (those that come with OS X are outdated).
+# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+brew install coreutils
+sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+
 
 # Install some other useful utilities like `sponge`.
 brew install moreutils
@@ -116,6 +118,7 @@ brew install xpdf
 #brew install ack
 #brew install exiv2
 brew install git
+brew install diff-so-fancy
 brew install imagemagick --with-webp
 brew install lua
 brew install p7zip
