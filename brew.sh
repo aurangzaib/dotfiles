@@ -8,6 +8,11 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+# Tapping branches of brew
+brew tap homebrew/science
+brew tap caskroom/cask
+brew install caskroom/cask/brew-cask
+
 # Make sure we’re using the latest Homebrew.
 brew update
 
@@ -16,11 +21,6 @@ brew upgrade
 
 # Common tools
 brew install make wget convertlit imagemagick boost ruby
-
-# Tapping branches of brew
-brew tap homebrew/science
-brew tap caskroom/cask
-brew install caskroom/cask/brew-cask
 
 # Opencv
 brew install opencv3
@@ -74,7 +74,6 @@ brew install ccat
 brew install coreutils
 sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
-
 # Install some other useful utilities like `sponge`.
 brew install moreutils
 
@@ -99,7 +98,6 @@ brew install wget --with-iri
 # brew install narwhal
 
 # Install more recent versions of some OS X tools.
-brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
@@ -111,12 +109,8 @@ brew install pngcheck
 brew install sqlmap
 # brew install tcpflow
 # brew install tcpreplay
-brew install tcptrace
-brew install xpdf
 
 # Install other useful binaries.
-#brew install ack
-#brew install exiv2
 brew install git
 brew install diff-so-fancy
 brew install imagemagick --with-webp
@@ -128,7 +122,6 @@ brew install rename
 brew install speedtest_cli
 brew install wifi-password
 brew install tree
-brew install ant
 
 # Remove outdated versions from the cellar.
 brew cleanup

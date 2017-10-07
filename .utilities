@@ -12,7 +12,7 @@ alias pdf-merge="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/R
 alias ytm="cd && youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --audio-quality 0 --embed-thumbnail"
 
 # open dotfiles in VSCode
-alias opendt="code-insiders dotfiles"
+alias opendt="code dotfiles"
 
 # open vscode with gpu
 alias code="code --force-gpu-rasterization -r"
@@ -30,9 +30,6 @@ alias backup="tmutil snapshot"
 
 # use ccat by default 
 alias cat=ccat
-
-# check battery status
-alias batterycheck="m battery status"
 
 # check the directory size
  alias dirsize="m dir size"
@@ -63,3 +60,20 @@ alias mutemac="m volume mute"
 
 # update the bash profile
 alias bash-update="cd && source .bash_profile"
+
+# quit all applications [excluding Safari and Terminal]
+alias quit-all="open -a quit"
+
+# reset dock 
+alias reset-dock="defaults write com.apple.Dock autohide-delay -float 0 && killall Dock"
+
+# Recursively delete anaconda cache files
+alias cleanup="conda clean --all -y ; emptytrash"
+
+# Empty the Trash on all mounted volumes and the main HDD
+# Also, clear Apple’s System Logs to improve shell startup speed
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+alias trashclean="emptytrash"
+
+# check battery status
+alias batterycheck="GetBatteryPercentage"
