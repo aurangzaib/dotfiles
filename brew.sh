@@ -52,6 +52,9 @@ brew cask install docker
 # Slack
 brew cask install slack
 
+# Virtualbox
+brew cask install virtualbox
+
 # ffmpeg to convert mp4 to mp3 etc
 brew install ffmpeg
 
@@ -110,8 +113,10 @@ brew install pigz
 brew install pv
 brew install rename
 brew install speedtest_cli
-brew install wifi-password
 brew install tree
+
+# wifi password
+brew install wifi-password
 
 # Remove outdated versions from the cellar.
 brew cleanup

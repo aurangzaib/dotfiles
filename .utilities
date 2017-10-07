@@ -77,3 +77,10 @@ alias trashclean="emptytrash"
 
 # check battery status
 alias batterycheck="GetBatteryPercentage"
+
+# list of wifi 
+alias wifi-list="airport -s"
+
+# IP addresses
+alias ip-global="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ip-local="ipconfig getifaddr en0"

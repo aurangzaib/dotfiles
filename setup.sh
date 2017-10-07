@@ -28,3 +28,6 @@ cd && source .bash_profile
 
 # save to local isntead of iCloud
 defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
+
+# symlink for airport
+sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
