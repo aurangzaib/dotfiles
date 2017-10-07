@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Install command-line tools using Homebrew.
-
 # Ask for the administrator password upfront.
 sudo -v
 
@@ -91,12 +89,6 @@ brew install bash-completion
 # Install `wget` with IRI support.
 brew install wget --with-iri
 
-# Install RingoJS and Narwhal.
-# Note that the order in which these are installed is important;
-# see http://git.io/brew-narwhal-ringo.
-# brew install ringojs
-# brew install narwhal
-
 # Install more recent versions of some OS X tools.
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
@@ -107,8 +99,6 @@ brew install binutils
 brew install nmap
 brew install pngcheck
 brew install sqlmap
-# brew install tcpflow
-# brew install tcpreplay
 
 # Install other useful binaries.
 brew install git

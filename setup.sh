@@ -27,4 +27,4 @@ git config --bool --global diff-so-fancy.markEmptyLines false
 cd && source .bash_profile
 
 # save to local isntead of iCloud
-save-to-local
+defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
