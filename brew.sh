@@ -115,6 +115,9 @@ brew install rename
 brew install speedtest_cli
 brew install tree
 
+# merge mp3 files
+brew install mp3wrap
+
 # wifi password
 brew install wifi-password
 
