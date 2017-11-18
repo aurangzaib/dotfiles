@@ -1,3 +1,6 @@
+# install brew packages
+bash dotfiles/brew.sh
+
 # creating symlinks 
 ln -s dotfiles/.bash_profile .bash_profile
 ln -s dotfiles/.bash_prompt .bash_prompt

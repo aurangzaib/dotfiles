@@ -24,6 +24,12 @@ alias prjdir="cd $project_directory_path"
 
 # listnride
 alias lnr="prjdir && cd listnride-frontend/"
+alias c-lnr="lnr && cd listnride && gulp clean"
+alias c-solution="lnr && cd listnride && gulp clean-lnr-shop-solution"
+alias c-integration="lnr && cd listnride && gulp clean-lnr-shop-integration"
+alias d-lnr="lnr && cd listnride && gulp deploy"
+alias d-solution="lnr && cd listnride && gulp deploy-lnr-shop-solution"
+alias d-integration="lnr && cd listnride && gulp deploy-lnr-shop-integration"
 
 # create a local timemachine backup
 alias backup="tmutil snapshot"
@@ -84,3 +90,11 @@ alias wifi-list="airport -s"
 # IP addresses
 alias ip-global="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ip-local="ipconfig getifaddr en0"
+
+# soundcloud download
+alias soundcloud="scdl -l"
+
+# open source tree at any directory
+alias source-tree="open -a SourceTree"
+# open source tree at current directory
+alias source-tree-here="open -a SourceTree ."
