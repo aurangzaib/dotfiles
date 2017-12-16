@@ -98,3 +98,17 @@ alias soundcloud="scdl -l"
 alias source-tree="open -a SourceTree"
 # open source tree at current directory
 alias source-tree-here="open -a SourceTree ."
+alias sth="source-tree-here"
+
+# lnr key
+alias lnr-key="echo H4rdlyUgly"
+
+# sdc term 2 simulator
+alias sdc-sim="cd /Users/siddiqui/Documents/Projects/self-drive/Datasets/ && open term2_sim.app"
+
+# create a GIF from video
+alias video2gif="ffmpeg -i result-ekf.mov -s 320x280 -pix_fmt rgb8 -r 18 -f gif - | gifsicle --optimize=3 --delay=3 > out.gif"
+
+# resize an image (replace image mode)
+# usage: image-reize 320x240 image.jpg
+alias img-resize="mogrify -resize "
