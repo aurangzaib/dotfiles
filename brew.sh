@@ -10,6 +10,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 brew tap homebrew/science
 brew tap caskroom/cask
 brew install caskroom/cask/brew-cask
+brew tap homebrew/versions
 
 # Make sure we’re using the latest Homebrew.
 brew update
@@ -17,8 +18,18 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
+# cppad
+brew install cppad
+
 # Common tools
-brew install make wget convertlit imagemagick boost ruby
+brew install make wget convertlit imagemagick boost ruby protobuf
+
+# Install QT, used for Data annotation tools for machine learning
+brew install qt
+brew install libxml2
+
+# gnu compiler compilation
+brew install gcc
 
 # Opencv
 brew install opencv3

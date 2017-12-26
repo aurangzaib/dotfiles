@@ -14,6 +14,9 @@ alias ytm="cd && youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg -
 # open dotfiles in VSCode
 alias opendt="code dotfiles"
 
+# current working directory
+alias cwd="echo $PWD"
+
 # open vscode with gpu
 alias code="code --force-gpu-rasterization -r"
 alias codeinsiders="code-insiders --force-gpu-rasterization -r"
@@ -103,8 +106,11 @@ alias sth="source-tree-here"
 # lnr key
 alias lnr-key="echo H4rdlyUgly"
 
+# sdc term 1 simulator
+alias sdc1-sim="cd /Users/siddiqui/Documents/Projects/datasets/ && open sdc_term1_sim.app"
+
 # sdc term 2 simulator
-alias sdc-sim="cd /Users/siddiqui/Documents/Projects/self-drive/Datasets/ && open term2_sim.app"
+alias sdc2-sim="cd /Users/siddiqui/Documents/Projects/datasets/ && open sdc_term2_sim.app"
 
 # create a GIF from video
 alias video2gif="ffmpeg -i result-ekf.mov -s 320x280 -pix_fmt rgb8 -r 18 -f gif - | gifsicle --optimize=3 --delay=3 > out.gif"
@@ -112,3 +118,6 @@ alias video2gif="ffmpeg -i result-ekf.mov -s 320x280 -pix_fmt rgb8 -r 18 -f gif 
 # resize an image (replace image mode)
 # usage: image-reize 320x240 image.jpg
 alias img-resize="mogrify -resize "
+
+# go to tensorflow > models > research > object_detection
+alias tf-objd="cd && cd ~/Documents/Projects/tensorflow/models/research/object_detection" 
