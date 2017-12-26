@@ -123,4 +123,4 @@ alias img-resize="mogrify -resize "
 alias tf-objd="cd && cd ~/Documents/Projects/tensorflow/models/research/object_detection" 
 
 # all files in directory to lower case
-rename -f 'y/A-Z/a-z/' *
+alias folder_lowercase="rename -f 'y/A-Z/a-z/' *"
