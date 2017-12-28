@@ -11,75 +11,29 @@ brew tap homebrew/science
 brew tap caskroom/cask
 brew install caskroom/cask/brew-cask
 brew tap homebrew/versions
+brew update; brew upgrade
 
-# Make sure we’re using the latest Homebrew.
-brew update
-
-# Upgrade any already-installed formulae.
-brew upgrade
-
-# Xcode 
+# Dev Tools
 xcode-select --all
-
-# cppad
-brew install cppad
-
-# Common tools
-brew install make wget convertlit imagemagick boost ruby protobuf
-
-# Install QT, used for Data annotation tools for machine learning
 brew install qt
 brew install libxml2
-
-# gnu compiler compilation
-brew install gcc
-
-# Opencv
+brew cask install xquartz
 brew install opencv3
-
-# ffmpeg to convert mp4 to mp3 etc
+brew install --HEAD libuv
+brew install gcc
 brew install ffmpeg
+brew install make 
+brew install wget 
+brew install convertlit 
+brew install imagemagick 
+brew install boost 
+brew install ruby 
+brew install protobuf
+brew install cppad
+brew install ipopt --with-openblas
+wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
 
-# download youtube videos
-brew install youtube-dl
-
-# ccat provides color schemes for cat in Terminal.app
-brew install ccat
-
-# Install GNU core utilities (those that come with OS X are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
-
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
-
-# Install Bash 4.
-# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
-brew install bash
-brew install bash-completion
-
-# Install `wget` with IRI support.
-brew install wget --with-iri
-
-# Install more recent versions of some OS X tools.
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
-
-# Install some CTF tools; see https://github.com/ctfs/write-ups.
-brew install binutils
-brew install nmap
-brew install pngcheck
-brew install sqlmap
-
-# Install other useful binaries.
+# System Tools
 brew install git
 brew install diff-so-fancy
 brew install imagemagick --with-webp
@@ -90,16 +44,27 @@ brew install pv
 brew install rename
 brew install speedtest_cli
 brew install tree
-brew install ipopt --with-openblas
 brew install mp3wrap
-
-# wifi password
 brew install wifi-password
+brew install ccat
+brew install coreutils
+sudo ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+brew install moreutils
+brew install findutils
+brew install gnu-sed --with-default-names
+brew install bash
+brew install bash-completion
+brew install zlib
+brew install wget --with-iri
+brew install homebrew/dupes/grep
+brew install homebrew/dupes/openssh
+brew install homebrew/dupes/screen
+brew install binutils
+brew install nmap
+brew install pngcheck
+brew install sqlmap
 
-# Remove outdated versions from the cellar.
-brew cleanup
-
-# Applications
+# Userland Tools
 brew cask install google-chrome
 brew cask install sourcetree
 brew cask install skype
@@ -117,3 +82,9 @@ brew cask install iina
 brew install docker
 brew cask install macdown
 brew cask install whatsapp
+brew install youtube-dl
+brew install soundcloud-dl
+
+
+# Remove outdated versions from the cellar.
+brew cleanup
