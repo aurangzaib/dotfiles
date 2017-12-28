@@ -12,6 +12,15 @@ ln -s dotfiles/.bashrc .bashrc
 # update the bash profile
 cd; source .bash_profile; cd
 
+# Xcode
+xcode-select --install
+
+# install brew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# update the bash profile
+cd; source .bash_profile; cd
+
 # install brew packages
 bash dotfiles/brew.sh
 

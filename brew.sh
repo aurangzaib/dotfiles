@@ -45,7 +45,6 @@ brew install pngcheck
 brew install sqlmap
 
 # Dev Tools
-xcode-select --all
 brew install qt
 brew install libxml2
 brew cask install xquartz
