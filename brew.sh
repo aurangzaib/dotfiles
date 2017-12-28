@@ -62,7 +62,7 @@ brew install ruby
 brew install protobuf
 brew install cppad
 brew install ipopt --with-openblas
-wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
+brew install node
 
 # Userland Tools
 brew cask install google-chrome
@@ -85,5 +85,5 @@ brew cask install whatsapp
 brew install youtube-dl
 brew install soundcloud-dl
 
-# Remove outdated versions from the cellar.
-brew cleanup
+# back to root folder
+cd 
