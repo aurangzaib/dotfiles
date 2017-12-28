@@ -10,7 +10,7 @@ ln -s dotfiles/.wgetrc .wgetrc
 ln -s dotfiles/.bashrc .bashrc
 
 # update the bash profile
-cd && source .bash_profile
+cd; source .bash_profile; cd
 
 # install brew packages
 bash dotfiles/brew.sh
