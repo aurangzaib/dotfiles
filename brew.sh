@@ -13,26 +13,6 @@ brew install caskroom/cask/brew-cask
 brew tap homebrew/versions
 brew update; brew upgrade
 
-# Dev Tools
-xcode-select --all
-brew install qt
-brew install libxml2
-brew cask install xquartz
-brew install opencv3
-brew install --HEAD libuv
-brew install gcc
-brew install ffmpeg
-brew install make 
-brew install wget 
-brew install convertlit 
-brew install imagemagick 
-brew install boost 
-brew install ruby 
-brew install protobuf
-brew install cppad
-brew install ipopt --with-openblas
-wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
-
 # System Tools
 brew install git
 brew install diff-so-fancy
@@ -63,6 +43,26 @@ brew install binutils
 brew install nmap
 brew install pngcheck
 brew install sqlmap
+
+# Dev Tools
+xcode-select --all
+brew install qt
+brew install libxml2
+brew cask install xquartz
+brew install opencv3
+brew install --HEAD libuv
+brew install gcc
+brew install ffmpeg
+brew install make 
+brew install wget 
+brew install convertlit 
+brew install imagemagick 
+brew install boost 
+brew install ruby 
+brew install protobuf
+brew install cppad
+brew install ipopt --with-openblas
+wget http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
 
 # Userland Tools
 brew cask install google-chrome
