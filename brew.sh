@@ -18,6 +18,9 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
+# Xcode 
+xcode-select --all
+
 # cppad
 brew install cppad
 
@@ -34,49 +37,11 @@ brew install gcc
 # Opencv
 brew install opencv3
 
-# Google Chrome
-brew cask install google-chrome
-
-# Sourcetree
-brew cask install sourcetree
-
-# Skype
-brew cask install skype
-
-# Jetbrains
-brew cask install clion
-brew cask install pycharm
-brew cask install webstorm
-
-# Visual Studio Code
-brew cask install visual-studio-code
-
-# Postman
-brew cask install postman
-
-# Shady
-brew cask install shady
-
-# Docker
-brew cask install docker
-
-# Slack
-brew cask install slack
-
-# Virtualbox
-brew cask install virtualbox
-
 # ffmpeg to convert mp4 to mp3 etc
 brew install ffmpeg
 
 # download youtube videos
 brew install youtube-dl
-
-# Macdown -- Markdown tool for macOS
-brew cask install macdown
-
-# IIVA media player -- used instead of VLC
-brew cask install iina
 
 # ccat provides color schemes for cat in Terminal.app
 brew install ccat
@@ -126,7 +91,6 @@ brew install rename
 brew install speedtest_cli
 brew install tree
 brew install ipopt --with-openblas
-# merge mp3 files
 brew install mp3wrap
 
 # wifi password
@@ -134,3 +98,22 @@ brew install wifi-password
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+# Applications
+brew cask install google-chrome
+brew cask install sourcetree
+brew cask install skype
+brew cask install clion
+brew cask install pycharm
+brew cask install webstorm
+brew cask install visual-studio-code
+brew cask install postman
+brew cask install shady
+brew cask install docker
+brew cask install slack
+brew cask install virtualbox
+brew cask install macdown
+brew cask install iina
+brew install docker
+brew cask install macdown
+brew cask install whatsapp
