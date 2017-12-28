@@ -85,6 +85,5 @@ brew cask install whatsapp
 brew install youtube-dl
 brew install soundcloud-dl
 
-
 # Remove outdated versions from the cellar.
 brew cleanup

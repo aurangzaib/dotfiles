@@ -1,6 +1,12 @@
 # install brew packages
 bash dotfiles/brew.sh
 
+# install miniconda
+cd; bash ~/miniconda.sh -b -p $HOME/miniconda
+export PATH="$HOME/miniconda/bin:$PATH"
+cp dotfiles/.env.yml miniconda/env.yml
+cd miniconda; conda env create -f env.yml; cd
+
 # creating symlinks 
 ln -s dotfiles/.bash_profile .bash_profile
 ln -s dotfiles/.bash_prompt .bash_prompt
@@ -11,10 +17,6 @@ ln -s dotfiles/.exports .exports
 ln -s dotfiles/.inputrc .inputrc
 ln -s dotfiles/.wgetrc .wgetrc
 ln -s dotfiles/.bashrc .bashrc
-
-# install miniconda
-bash ~/miniconda.sh -b -p $HOME/miniconda
-export PATH="$HOME/miniconda/bin:$PATH"
 
 # git global settings
 git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
@@ -36,6 +38,3 @@ cd && source .bash_profile
 
 # save to local isntead of iCloud
 defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
-
-# symlink for airport
-sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
