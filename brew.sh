@@ -62,6 +62,7 @@ brew install protobuf
 brew install cppad
 brew install ipopt --with-openblas
 brew install node
+brew cask install java
 
 # Userland Tools
 brew cask install google-chrome
@@ -83,6 +84,7 @@ brew cask install macdown
 brew cask install whatsapp
 brew install youtube-dl
 brew install soundcloud-dl
+brew install vlc
 
 # back to root folder
 cd 

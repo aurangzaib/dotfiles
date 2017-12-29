@@ -12,7 +12,7 @@ alias pdf-merge="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/R
 alias ytm="cd && youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --audio-quality 0 --embed-thumbnail"
 
 # open dotfiles in VSCode
-alias opendt="code dotfiles"
+alias editdt="cd; code -r .dotfiles"
 
 # current working directory
 alias cwd="echo $PWD"

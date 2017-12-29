@@ -1,9 +1,9 @@
-npm install eslint
-npm install express
-npm install gulp
-npm install ncu
-npm install nodemon
-npm install typescript
+npm install -g eslint
+npm install -g express
+npm install -g gulp
+npm install -g ncu
+npm install -g nodemon
+npm install -g typescript
 
 # back to root folder
 cd

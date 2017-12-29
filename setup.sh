@@ -1,13 +1,14 @@
 # creating symlinks 
-ln -s dotfiles/.bash_profile .bash_profile
-ln -s dotfiles/.bash_prompt .bash_prompt
-ln -s dotfiles/.function .function
-ln -s dotfiles/.aliases .aliases
-ln -s dotfiles/.utilities .utilities
-ln -s dotfiles/.exports .exports
-ln -s dotfiles/.inputrc .inputrc
-ln -s dotfiles/.wgetrc .wgetrc
-ln -s dotfiles/.bashrc .bashrc
+cd 
+ln -s .dotfiles/.bash_profile .bash_profile
+ln -s .dotfiles/.bash_prompt .bash_prompt
+ln -s .dotfiles/.function .function
+ln -s .dotfiles/.aliases .aliases
+ln -s .dotfiles/.utilities .utilities
+ln -s .dotfiles/.exports .exports
+ln -s .dotfiles/.inputrc .inputrc
+ln -s .dotfiles/.wgetrc .wgetrc
+ln -s .dotfiles/.bashrc .bashrc
 
 # update the bash profile
 cd; source .bash_profile; cd

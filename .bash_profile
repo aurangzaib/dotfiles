@@ -20,8 +20,8 @@ export PATH="/usr/local/bin:$PATH"
 
 # JRE and JDK
 # after installing jdk & jre from oracle site
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export JDK_HOME=$(/usr/libexec/java_home -v 1.8)
+export JAVA_HOME=$(/usr/libexec/java_home)
+export JDK_HOME=$(/usr/libexec/java_home)
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -80,6 +80,6 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 # anaconda python 3
-export PATH="/Users/siddiqui/miniconda3/envs/carnd-term1/bin:$PATH"
+export PATH="/Users/siddiqui/miniconda/envs/siddiqui/bin:$PATH"
 export PATH="/usr/local/opt/opencv3/bin:$PATH"
-source activate carnd-term1
+source activate siddiqui
