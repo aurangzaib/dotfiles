@@ -1,0 +1,41 @@
+# brew script link
+brew_install="https://raw.githubusercontent.com/Homebrew/install/master/install"
+
+# projects directory
+project_directory_path="/Users/siddiqui/Documents/Projects/"
+
+# project dataset directory
+prj_dataset="/Users/siddiqui/Documents/Projects/datasets/"
+
+# tensorflow models research dir
+tf_dir="/Users/siddiqui/Documents/Projects/tensorflow/models/research"
+
+# tensorflow model test script
+model_test="object_detection/builders/model_builder_test.py"
+
+# path variables for racoon dataset
+raccoon_models="$tf_dir/dataset_raccoon/models/ssd_mobilenet_v1_pets"
+config_racoon="$raccoon_models/ssd_mobilenet_v1_pets.config"
+checkpoint_racoon="$raccoon_models/training/model.ckpt-116"
+train_racoon="$raccoon_models/training"
+eval_racoon="$raccoon_models/eval"
+
+######## tensorflow krones ################
+
+# data and model folders
+krones_dataset="$tf_dir/dataset_krones"
+krones_models="$krones_dataset/models/ssd_mobilenet_v1_coco"
+krones_config="$krones_models/ssd_mobilenet_v1_krones.config"
+krones_data="$krones_dataset/data"
+# train
+krones_train_annotations="$krones_dataset/dataset/train/annotations"
+krones_train_dataset="$krones_dataset/dataset/train/images"
+krones_train_record="$krones_dataset/data/train.record"
+krones_train_csv="$krones_dataset/data/train.csv"
+krones_train_dir="$krones_models/train"
+# eval
+krones_eval_annotations="$krones_dataset/dataset/eval/annotations"
+krones_eval_dataset="$krones_dataset/dataset/eval/images"
+krones_eval_record="$krones_dataset/data/eval.record"
+krones_eval_csv="$krones_dataset/data/eval.csv"
+krones_eval_dir="$krones_models/eval"

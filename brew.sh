@@ -62,7 +62,8 @@ brew install protobuf
 brew install cppad
 brew install ipopt --with-openblas
 brew install node
-brew cask install java
+brew cask install java8
+brew install bazel
 
 # Userland Tools
 brew cask install google-chrome

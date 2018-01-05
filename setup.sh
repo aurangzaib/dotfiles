@@ -1,8 +1,9 @@
-# creating symlinks 
-cd 
+# creating symlinks
+cd
 ln -s .dotfiles/.bash_profile .bash_profile
 ln -s .dotfiles/.bash_prompt .bash_prompt
-ln -s .dotfiles/.function .function
+ln -s .dotfiles/.functions .functions
+ln -s .dotfiles/.variables .variables
 ln -s .dotfiles/.aliases .aliases
 ln -s .dotfiles/.utilities .utilities
 ln -s .dotfiles/.exports .exports
@@ -17,7 +18,7 @@ cd; source .bash_profile; cd
 xcode-select --install
 
 # install brew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL $brew_install)"
 
 # update the bash profile
 cd; source .bash_profile; cd

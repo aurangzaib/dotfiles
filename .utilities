@@ -1,8 +1,5 @@
-# update node packages
-alias npm-update="ncu -u"
-
 # install npm global packages
-npmg="sudo npm install -g"
+alias npmg="sudo npm install -g"
 alias npm-packages="npmg typescript; npmg eslint; npmg gulp; npmg ncu; npmg nodemon"
 
 # merge pdf files
@@ -19,10 +16,8 @@ alias cwd="echo $PWD"
 
 # open vscode with gpu
 alias code="code --force-gpu-rasterization -r"
-alias codeinsiders="code-insiders --force-gpu-rasterization -r"
 
 #project folder
-project_directory_path="/Users/siddiqui/Documents/Projects/"
 alias prjdir="cd $project_directory_path"
 
 # listnride
@@ -37,7 +32,7 @@ alias d-integration="lnr && cd listnride && gulp deploy-lnr-shop-integration"
 # create a local timemachine backup
 alias backup="tmutil snapshot"
 
-# use ccat by default 
+# use ccat by default
 alias cat=ccat
 
 # check the directory size
@@ -65,7 +60,7 @@ alias shutdownmac="m shutdown"
 alias volumeset="m volume"
 
 # mute volume of the mac
-alias mutemac="m volume mute" 
+alias mutemac="m volume mute"
 
 # update the bash profile
 alias bash-update="cd && source .bash_profile"
@@ -73,11 +68,11 @@ alias bash-update="cd && source .bash_profile"
 # quit all applications [excluding Safari and Terminal]
 alias quit-all="open -a quit"
 
-# reset dock 
+# reset dock
 alias reset-dock="defaults write com.apple.Dock autohide-delay -float 0 && killall Dock"
 
 # Recursively delete anaconda cache files
-alias cleanup="conda clean --all -y ; emptytrash"
+alias cleanup="echo 'clean brew'; brew cleanup; echo 'clean cask'; brew cask cleanup; echo 'clean conda'; conda clean --all -y"
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
@@ -87,7 +82,7 @@ alias trashclean="emptytrash"
 # check battery status
 alias batterycheck="GetBatteryPercentage"
 
-# list of wifi 
+# list of wifi
 alias wifi-list="airport -s"
 
 # IP addresses
@@ -106,11 +101,9 @@ alias sth="source-tree-here"
 # lnr key
 alias lnr-key="echo H4rdlyUgly"
 
-# sdc term 1 simulator
-alias sdc1-sim="cd /Users/siddiqui/Documents/Projects/datasets/ && open sdc_term1_sim.app"
-
-# sdc term 2 simulator
-alias sdc2-sim="cd /Users/siddiqui/Documents/Projects/datasets/ && open sdc_term2_sim.app"
+# sdc simulators
+alias sdc1-sim="cd $prj_dataset && open sdc_term1_sim.app"
+alias sdc2-sim="cd $prj_dataset && open sdc_term2_sim.app"
 
 # create a GIF from video
 alias video2gif="ffmpeg -i result-ekf.mov -s 320x280 -pix_fmt rgb8 -r 18 -f gif - | gifsicle --optimize=3 --delay=3 > out.gif"
@@ -120,7 +113,16 @@ alias video2gif="ffmpeg -i result-ekf.mov -s 320x280 -pix_fmt rgb8 -r 18 -f gif 
 alias img-resize="mogrify -resize "
 
 # go to tensorflow > models > research > object_detection
-alias tf-objd="cd && cd ~/Documents/Projects/tensorflow/models/research/object_detection" 
+alias tf_model_dir="prjdir; cd $tf_dir; py_path"
 
 # all files in directory to lower case
 alias folder_lowercase="rename -f 'y/A-Z/a-z/' *"
+
+# python alias
+alias pt="python"
+
+# go back two directories
+alias cd2="cd .. && cd .."
+
+# test TensorFlow installation
+alias testtf="tf_model_dir && g_protobuff && python $model_test"

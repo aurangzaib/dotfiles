@@ -26,6 +26,15 @@ function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
 
+# Add Libraries to PYTHONPATH
+function py_path(){
+	export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim;
+}
+
+# compile google protocol buffer
+function g_protobuff(){
+  protoc object_detection/protos/*.proto --python_out=.;
+}
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
 	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
