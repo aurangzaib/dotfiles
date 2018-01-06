@@ -126,3 +126,10 @@ alias cd2="cd .. && cd .."
 
 # test TensorFlow installation
 alias testtf="tf_model_dir && g_protobuff && python $model_test"
+
+# activate python
+alias p3="source activate siddiqui_p352"
+alias p2="source activate siddiqui_p279"
+
+# create conda environment
+alias create_conda_env="conda env create -f "

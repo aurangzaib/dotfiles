@@ -1,0 +1,29 @@
+name: siddiqui_p279
+channels:
+    - https://conda.anaconda.org/menpo
+    - conda-forge
+dependencies:
+    - python==2.7.9
+    - numpy
+    - matplotlib
+    - jupyter
+    - opencv3
+    - pillow
+    - scikit-learn
+    - scikit-image
+    - scipy
+    - h5py
+    - eventlet
+    - flask-socketio
+    - seaborn
+    - pandas
+    - ffmpeg
+    - imageio=2.1.2
+    - pyqt=4.11.4
+    - nltk
+    - pip:
+        - moviepy
+        - tensorflow
+        - keras
+        - lxml
+        - pillow

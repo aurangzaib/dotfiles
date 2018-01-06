@@ -1,4 +1,4 @@
-name: siddiqui
+name: siddiqui_p352
 channels:
     - https://conda.anaconda.org/menpo
     - conda-forge
@@ -25,5 +25,5 @@ dependencies:
         - moviepy
         - tensorflow
         - keras
-	    - lxml
-	    - pillow
+        - lxml
+        - pillow
