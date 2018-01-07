@@ -19,33 +19,3 @@ config_racoon="$raccoon_models/ssd_mobilenet_v1_pets.config"
 checkpoint_racoon="$raccoon_models/training/model.ckpt-116"
 train_racoon="$raccoon_models/training"
 eval_racoon="$raccoon_models/eval"
-
-######## tensorflow krones ################
-
-# data and model folders
-krones_dataset="$tf_dir/dataset_krones"
-krones_models="$krones_dataset/models/ssd_mobilenet_v1_coco"
-krones_config="$krones_models/ssd_mobilenet_v1_krones.config"
-krones_data="$krones_dataset/data"
-# train
-krones_train_annotations="$krones_dataset/dataset/train/annotations"
-krones_train_dataset="$krones_dataset/dataset/train/images"
-krones_train_record="$krones_dataset/data/train.record"
-krones_train_csv="$krones_dataset/data/train.csv"
-krones_train_dir="$krones_models/train"
-# eval
-krones_eval_annotations="$krones_dataset/dataset/eval/annotations"
-krones_eval_dataset="$krones_dataset/dataset/eval/images"
-krones_eval_record="$krones_dataset/data/eval.record"
-krones_eval_csv="$krones_dataset/data/eval.csv"
-krones_eval_dir="$krones_models/eval"
-
-######## tensorflow google cloud ML krones ################
-
-gcml_yml="$krones_models/gcml.yml"
-gcml_krones="bottle_detector/"
-gcml_krones_packages="dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz"
-gcml_krones_models="$gcml_krones/models/ssd_mobilenet_v1_coco"
-gcml_krones_config="$gcml_krones_models/ssd_mobilenet_v1_krones_gcml.config"
-gcml_krones_train_dir="$gcml_krones_models/train"
-gcml_krones_eval_dir="$gcml_krones_models/eval"

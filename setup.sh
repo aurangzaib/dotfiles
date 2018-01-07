@@ -4,10 +4,11 @@ ln -s .dotfiles/.bash_profile .bash_profile
 ln -s .dotfiles/.bash_prompt .bash_prompt
 ln -s .dotfiles/.functions .functions
 ln -s .dotfiles/.variables .variables
-ln -s .dotfiles/.aliases .aliases
 ln -s .dotfiles/.utilities .utilities
+ln -s .dotfiles/.aliases .aliases
 ln -s .dotfiles/.exports .exports
 ln -s .dotfiles/.inputrc .inputrc
+ln -s .dotfiles/.krones .krones
 ln -s .dotfiles/.wgetrc .wgetrc
 ln -s .dotfiles/.bashrc .bashrc
 

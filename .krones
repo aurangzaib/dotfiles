@@ -1,0 +1,108 @@
+########## KRONES TENSOR OBJECT DETECTION ##########
+
+# data and model folders
+krones_dataset="$tf_dir/dataset_krones"
+krones_models="$krones_dataset/models/ssd_mobilenet_v1_coco"
+krones_config="$krones_models/ssd_mobilenet_v1_krones.config"
+krones_frozen="${krones_models}/frozen_graph"
+krones_data="$krones_dataset/data"
+
+# train
+krones_train_annotations="$krones_dataset/dataset/train/annotations"
+krones_train_dataset="$krones_dataset/dataset/train/images"
+krones_train_record="$krones_dataset/data/train.record"
+krones_train_csv="$krones_dataset/data/train.csv"
+krones_train_dir="$krones_models/train"
+
+# eval
+krones_eval_annotations="$krones_dataset/dataset/eval/annotations"
+krones_eval_dataset="$krones_dataset/dataset/eval/images"
+krones_eval_record="$krones_dataset/data/eval.record"
+krones_eval_csv="$krones_dataset/data/eval.csv"
+krones_eval_dir="$krones_models/eval"
+
+# krones google cloud ML 
+gcml_yml="$krones_models/gcml.yml"
+gcml_krones="bottle_detector"
+gcml_krones_packages="dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz"
+gcml_krones_config="$gcml_krones/data/pipeline.config"
+gcml_krones_train_dir="$gcml_krones/train"
+gcml_krones_eval_dir="$gcml_krones/eval"
+
+# train on local machine
+function krones_train_local(){
+  tf_model_dir;
+  python object_detection/train.py \
+                         --logtostderr \
+                         --pipeline_config_path=${krones_config} \
+                         --train_dir=${krones_train_dir}
+}
+
+# evaluate on local machine
+function krones_eval_local() {
+  tf_model_dir;
+  python object_detection/eval.py \
+                       --logtostderr \
+                       --pipeline_config_path=${krones_config} \
+                       --checkpoint_dir=${krones_train_dir}
+                       --eval_dir=${krones_eval_dir}
+}
+
+# tensorboard on local machine
+function krones_tensorboard_local(){
+  tf_model_dir;
+  tensorboard --logdir=${krones_model_dir}
+}
+
+# export frozen weights on local machine
+# usage:
+# krones_export_local CKPT_NUMBER
+function krones_export_local(){
+  # go to tensorflow/models/reseaerch directory
+  tf_model_dir;
+  # move old frozen weights
+  mv -f ${krones_models}/frozen_graph ${krones_frozen}_old
+  # get new optimized frozen weights
+  python object_detection/export_inference_graph.py \
+                         --input_type=image_tensor \
+                         --pipeline_config_path=${krones_config} \
+                         --trained_checkpoint_prefix=${krones_train_dir}/model.ckpt-$1 \
+                         --output_directory=${krones_frozen}
+}
+
+# create new TFRecord
+function krones_generate_tfrecord (){
+  tf_model_dir;
+  python object_detection/utils/generate_tfrecord.py \
+                              --dir=dataset_krones \
+                              --csv_name=train_labels.csv
+}
+
+# perform inference 
+function krones_inference (){
+  tf_model_dir;
+  python object_detection/object_detection_tutorial.py
+}
+
+# train network on google cloud ML
+function krones_train_gcml() {
+  tf_model_dir;
+  gcloud ml-engine jobs submit training object_detection_`date +%s` \
+                       --job-dir=gs://${gcml_krones_train_dir} \
+                       --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz \
+                       --module-name object_detection.train \
+                       --region us-central1 --config ${gcml_yml} \
+                       -- \
+                       --train_dir=gs://${gcml_krones_train_dir} \
+                       --pipeline_config_path=gs://${gcml_krones_config};
+}
+
+# copy updated trained model on google cloud ML
+function krones_set_model_gcml(){
+  # go to models/research/
+  tf_model_dir;
+  # remove old model from gcml
+  gsutil rm -rf gs://bottle_detector/data/model.ckpt*
+  # copy new model to gcml
+  gsutil cp ${krones_frozen}/model.ckpt* gs://bottle_detector/data
+}
