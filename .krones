@@ -84,9 +84,35 @@ function krones_inference (){
   python object_detection/object_detection_tutorial.py
 }
 
+# get new trained model from google cloud ML
+# usage:
+#  krones_get_model_gcml MODEL_NUMBER
+function krones_get_model_gcml() {
+# remove old model from download folder
+ cd Downloads; rm -rf model.ckpt*; cd;
+ # donwload new model from gcml to local train folder
+ gsutil cp gs://${gcml_krones_train_dir}/model.ckpt-${1}* ${krones_train_dir} 
+ # copy checkpoint file
+ gsutil cp gs://${gcml_krones_train_dir}/checkpoint ${krones_train_dir}
+}
+
+# copy updated trained model on google cloud ML
+function krones_set_model_gcml() {
+  # go to models/research/
+  tf_model_dir;
+  # remove old model from gcml
+  gsutil rm -rf gs://bottle_detector/data/model.ckpt*
+  # copy new model to gcml
+  gsutil cp ${krones_frozen}/model.ckpt* gs://bottle_detector/data
+}
+
 # train network on google cloud ML
 function krones_train_gcml() {
+  # update model on gcml before starting new training
+  krones_set_model_gcml;
+  # go to models/research/
   tf_model_dir;
+  # start gcml training
   gcloud ml-engine jobs submit training object_detection_`date +%s` \
                        --job-dir=gs://${gcml_krones_train_dir} \
                        --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz \
@@ -95,14 +121,4 @@ function krones_train_gcml() {
                        -- \
                        --train_dir=gs://${gcml_krones_train_dir} \
                        --pipeline_config_path=gs://${gcml_krones_config};
-}
-
-# copy updated trained model on google cloud ML
-function krones_set_model_gcml(){
-  # go to models/research/
-  tf_model_dir;
-  # remove old model from gcml
-  gsutil rm -rf gs://bottle_detector/data/model.ckpt*
-  # copy new model to gcml
-  gsutil cp ${krones_frozen}/model.ckpt* gs://bottle_detector/data
 }
