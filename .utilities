@@ -72,7 +72,7 @@ alias quit-all="open -a quit"
 alias reset-dock="defaults write com.apple.Dock autohide-delay -float 0 && killall Dock"
 
 # Recursively delete anaconda cache files
-alias cleanup="echo 'clean brew'; brew cleanup; echo 'clean cask'; brew cask cleanup; echo 'clean conda'; conda clean --all -y"
+alias cleanup="echo 'clean brew'; brew cleanup; echo 'clean cask'; brew cask cleanup; echo 'clean conda'; conda clean --all -y; brew prune"
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed

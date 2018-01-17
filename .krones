@@ -1,7 +1,7 @@
 ########## KRONES TENSOR OBJECT DETECTION ##########
 
 # data and model folders
-krones_dataset="$tf_dir/dataset_krones"
+krones_dataset="$tf_dir/krones"
 krones_models="$krones_dataset/models/ssd_mobilenet_v1_coco"
 krones_config="$krones_models/ssd_mobilenet_v1_krones.config"
 krones_frozen="${krones_models}/frozen_graph"
@@ -23,9 +23,9 @@ krones_eval_dir="$krones_models/eval"
 
 # krones google cloud ML 
 gcml_yml="$krones_models/gcml.yml"
-gcml_krones="bottle_detector"
+gcml_krones="fallen_bottle_detector"
 gcml_krones_packages="dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz"
-gcml_krones_config="$gcml_krones/data/pipeline.config"
+gcml_krones_config="$gcml_krones/data/ssd_mobilenet_v1_krones_gcml.config"
 gcml_krones_train_dir="$gcml_krones/train"
 gcml_krones_eval_dir="$gcml_krones/eval"
 
@@ -72,16 +72,17 @@ function krones_export_local(){
 
 # create new TFRecord
 function krones_generate_tfrecord (){
-  tf_model_dir;
-  python object_detection/utils/generate_tfrecord.py \
-                              --dir=dataset_krones \
-                              --csv_name=train_labels.csv
+  tf_model_dir; p2;
+  python dataset_krones_2/scripts/generate_tfrecord.py \
+                              --dir=${krones_train_dataset} \
+                              --csv=${krones_train_csv} \
+                              --output=${krones_train_record}
 }
 
 # perform inference 
 function krones_inference (){
   tf_model_dir;
-  python object_detection/object_detection_tutorial.py
+  python object_detection/detection_pipeline.py
 }
 
 # get new trained model from google cloud ML
@@ -89,7 +90,7 @@ function krones_inference (){
 #  krones_get_model_gcml MODEL_NUMBER
 function krones_get_model_gcml() {
 # remove old model from download folder
- cd Downloads; rm -rf model.ckpt*; cd;
+ cd; cd Downloads; rm -rf model.ckpt*; cd;
  # donwload new model from gcml to local train folder
  gsutil cp gs://${gcml_krones_train_dir}/model.ckpt-${1}* ${krones_train_dir} 
  # copy checkpoint file
@@ -101,9 +102,9 @@ function krones_set_model_gcml() {
   # go to models/research/
   tf_model_dir;
   # remove old model from gcml
-  gsutil rm -rf gs://bottle_detector/data/model.ckpt*
+  gsutil rm -rf gs://${gcml_krones}/data/model.ckpt*
   # copy new model to gcml
-  gsutil cp ${krones_frozen}/model.ckpt* gs://bottle_detector/data
+  gsutil cp ${krones_frozen}/model.ckpt* gs://${gcml_krones}/data
 }
 
 # train network on google cloud ML
@@ -112,6 +113,10 @@ function krones_train_gcml() {
   krones_set_model_gcml;
   # go to models/research/
   tf_model_dir;
+  # packaging
+  python setup.py sdist
+  # slim packaging
+  cd slim; python setup.py sdist; cd ..
   # start gcml training
   gcloud ml-engine jobs submit training object_detection_`date +%s` \
                        --job-dir=gs://${gcml_krones_train_dir} \
@@ -121,4 +126,9 @@ function krones_train_gcml() {
                        -- \
                        --train_dir=gs://${gcml_krones_train_dir} \
                        --pipeline_config_path=gs://${gcml_krones_config};
+}
+
+# get trained model and create frozen model
+krones_export_gcml(){
+  krones_get_model_gcml ${1} && krones_export_local ${1};
 }
