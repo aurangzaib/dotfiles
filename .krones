@@ -30,7 +30,7 @@ gcml_krones_train_dir="$gcml_krones/train"
 gcml_krones_eval_dir="$gcml_krones/eval"
 
 # train on local machine
-function krones_train_local(){
+function krones_train(){
   tf_model_dir;
   python object_detection/train.py \
                          --logtostderr \
@@ -39,7 +39,7 @@ function krones_train_local(){
 }
 
 # evaluate on local machine
-function krones_eval_local() {
+function krones_eval() {
   tf_model_dir;
   python object_detection/eval.py \
                        --logtostderr \
@@ -49,7 +49,7 @@ function krones_eval_local() {
 }
 
 # tensorboard on local machine
-function krones_tensorboard_local(){
+function krones_tensorboard(){
   tf_model_dir;
   tensorboard --logdir=${krones_model_dir}
 }
@@ -57,7 +57,7 @@ function krones_tensorboard_local(){
 # export frozen weights on local machine
 # usage:
 # krones_export_local CKPT_NUMBER
-function krones_export_local(){
+function krones_export(){
   # go to tensorflow/models/reseaerch directory
   tf_model_dir;
   # move old frozen weights
@@ -73,7 +73,7 @@ function krones_export_local(){
 # create new TFRecord
 function krones_generate_tfrecord (){
   tf_model_dir; p2;
-  python dataset_krones_2/scripts/generate_tfrecord.py \
+  python ${krones_dataset}/scripts/generate_tfrecord.py \
                               --dir=${krones_train_dataset} \
                               --csv=${krones_train_csv} \
                               --output=${krones_train_record}
