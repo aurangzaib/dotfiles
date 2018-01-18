@@ -70,9 +70,17 @@ function krones_export(){
                          --output_directory=${krones_frozen}
 }
 
+# create new CSV
+function krones_generate_csv (){
+  tf_model_dir; p2;
+  python ${krones_dataset}/scripts/xml_to_csv.py \
+                              --xml_dir=${krones_train_annotations} \
+                              --csv=${krones_train_csv}
+}
+
 # create new TFRecord
 function krones_generate_tfrecord (){
-  tf_model_dir; p2;
+  krones_generate_csv;
   python ${krones_dataset}/scripts/generate_tfrecord.py \
                               --dir=${krones_train_dataset} \
                               --csv=${krones_train_csv} \
