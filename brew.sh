@@ -88,4 +88,4 @@ brew install soundcloud-dl
 brew install vlc
 
 # back to root folder
-cd 
+cd;

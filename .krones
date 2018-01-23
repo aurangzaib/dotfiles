@@ -74,6 +74,15 @@ function krones_export() {
                          --output_directory=${krones_frozen}_$1
 }
 
+# perform inference CKPT_NUMBER
+function krones_inference (){
+  tf_model_dir;
+  echo "using frozen_graph_"$1;
+  python object_detection/detection_pipeline.py \
+                            --CKPT_NUMBER=$1 \
+                            --folder=$2/
+}
+
 # create new CSV
 function krones_generate_csv (){
   tf_model_dir; p2;
@@ -100,7 +109,7 @@ function krones_generate_tfrecord (){
 # create data folder for GCML training
 # usage: 
 #   krones_generate_gcml MODEL_NUMBER
-function krones_generate_gcml() {
+function krones_gcml_generate() {
   # copy TFRecord file
   cp ${krones_train_record} ${gcml_train_record}
   # copy labels file
@@ -115,19 +124,10 @@ function krones_generate_gcml() {
   echo "Successfully copied GCML data"
 }
 
-# perform inference CKPT_NUMBER
-function krones_inference (){
-  tf_model_dir;
-  echo "using frozen_graph_"$1;
-  python object_detection/detection_pipeline.py \
-                            --CKPT_NUMBER=$1 \
-                            --folder=$2/
-}
-
 # get new trained model from google cloud ML
 # usage:
 #  krones_get_model_gcml MODEL_NUMBER
-function krones_get_model_gcml() {
+function krones_gcml_get() {
 # remove old model from download folder
  cd; cd Downloads; rm -rf model.ckpt*; cd;
  # donwload new model from gcml to local train folder
@@ -139,17 +139,19 @@ function krones_get_model_gcml() {
 }
 
 # copy updated trained model on google cloud ML
-function krones_set_model_gcml() {
+function krones_gcml_set() {
   # go to models/research/
   tf_model_dir;
   # remove old model from gcml
   gsutil rm -rf gs://${gcml_krones}/data/model.ckpt*
-  # copy new model to gcml
-  gsutil cp ${krones_frozen}/model.ckpt* gs://${gcml_krones}/data
+  # remove old checkpoint
+  gsutil rm -rf gs://${gcml_krones}/data/checkpoint
+  # copy new model and checkpoint to gcml
+  gsutil cp ${gcml_data_dir}/* gs://${gcml_krones}/data
 }
 
 # train network on google cloud ML
-function krones_train_gcml() {
+function krones_gcml_train() {
   # update model on gcml before starting new training
   # krones_set_model_gcml;
   # go to models/research/
@@ -171,8 +173,8 @@ function krones_train_gcml() {
 }
 
 # get trained model and create frozen model
-function krones_export_gcml(){
-  krones_get_model_gcml ${1} && krones_export_local ${1};
+function krones_gcml_export(){
+  krones_gcml_get ${1} && krones_export ${1};
 }
 
 # tensorboard on krones google cloud ML
