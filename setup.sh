@@ -1,5 +1,5 @@
 # creating symlinks
-cd
+cd;
 ln -s .dotfiles/.bash_profile .bash_profile
 ln -s .dotfiles/.bash_prompt .bash_prompt
 ln -s .dotfiles/.functions .functions
@@ -13,7 +13,7 @@ ln -s .dotfiles/.wgetrc .wgetrc
 ln -s .dotfiles/.bashrc .bashrc
 
 # update the bash profile
-cd; source .bash_profile; cd
+cd; source .bash_profile; cd;
 
 # Xcode
 xcode-select --install
@@ -22,7 +22,7 @@ xcode-select --install
 /usr/bin/ruby -e "$(curl -fsSL $brew_install)"
 
 # update the bash profile
-cd; source .bash_profile; cd
+bash_update
 
 # install brew packages
 bash dotfiles/brew.sh
@@ -52,4 +52,4 @@ git config --bool --global diff-so-fancy.markEmptyLines false
 defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
 
 # clean all cache files of brew, node, conda
-cleanup; bash-update
+cleanup; bash_update

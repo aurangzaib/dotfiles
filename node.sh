@@ -6,4 +6,4 @@ npm install -g nodemon
 npm install -g typescript
 
 # back to root folder
-cd
+cd;
