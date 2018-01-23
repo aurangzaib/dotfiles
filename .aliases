@@ -38,8 +38,9 @@ alias week='date +%V'
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+# Updating pip seems to be very error prone; not using currently1
 alias pip-update="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
-alias update='cd && sudo softwareupdate -i -a; conda upgrade --all -y; pip-update; brew update; brew upgrade; cleanup'
+alias update='cd && sudo softwareupdate -i -a; conda upgrade --all -y; brew update; brew upgrade; cleanup'
 
 # IP addresses
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"

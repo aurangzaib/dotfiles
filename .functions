@@ -166,3 +166,23 @@ function tre() {
 function chrome () {
     open -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome;
 }
+
+# convert from one format to other
+function convert_img() {
+  mogrify -format $2 *.$1
+}
+
+# convert from images to pdf
+function convert_pdf() {
+  convert *.$1 output.pdf
+}
+
+# update the bash profile
+function bash_update () {
+  # get current directory
+  cwd=${PWD};
+  # update profile
+  cd; source .bash_profile; 
+  # cd to previous working directory
+  cd $cwd;
+}

@@ -62,9 +62,6 @@ alias volumeset="m volume"
 # mute volume of the mac
 alias mutemac="m volume mute"
 
-# update the bash profile
-alias bash-update="cd && source .bash_profile"
-
 # quit all applications [excluding Safari and Terminal]
 alias quit-all="open -a quit"
 

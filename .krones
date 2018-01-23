@@ -1,17 +1,21 @@
 ########## KRONES TENSOR OBJECT DETECTION ##########
 
 # data and model folders
+krones_folder_number="complete"
 krones_dataset="$tf_dir/krones"
+krones_dataset_dir="$krones_dataset/dataset_$krones_folder_number"
 krones_models="$krones_dataset/models/ssd_mobilenet_v1_coco"
-krones_config="$krones_models/ssd_mobilenet_v1_krones.config"
+krones_config="$krones_models/pipeline.config"
 krones_frozen="${krones_models}/frozen_graph"
 krones_data="$krones_dataset/data"
+krones_train_name="train_$krones_folder_number"
 
 # train
-krones_train_annotations="$krones_dataset/dataset/train/annotations"
-krones_train_dataset="$krones_dataset/dataset/train/images"
-krones_train_record="$krones_dataset/data/train.record"
-krones_train_csv="$krones_dataset/data/train.csv"
+krones_train_annotations="$krones_dataset_dir/train/annotations"
+krones_train_dataset="$krones_dataset_dir/train/images"
+krones_train_record="$krones_dataset/data/$krones_train_name.record"
+krones_train_csv="$krones_dataset/data/$krones_train_name.csv"
+krones_train_label="$krones_dataset/data/label_map.pbtxt"
 krones_train_dir="$krones_models/train"
 
 # eval
@@ -21,16 +25,18 @@ krones_eval_record="$krones_dataset/data/eval.record"
 krones_eval_csv="$krones_dataset/data/eval.csv"
 krones_eval_dir="$krones_models/eval"
 
-# krones google cloud ML 
+# google cloud ML 
 gcml_yml="$krones_models/gcml.yml"
-gcml_krones="fallen_bottle_detector"
+gcml_krones="krones_pet_bottles_2"
 gcml_krones_packages="dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz"
-gcml_krones_config="$gcml_krones/data/ssd_mobilenet_v1_krones_gcml.config"
+gcml_krones_config="$gcml_krones/data/pipeline_gcml.config"
 gcml_krones_train_dir="$gcml_krones/train"
 gcml_krones_eval_dir="$gcml_krones/eval"
+gcml_data_dir="$krones_dataset/data_gcml"
+gcml_train_record="$gcml_data_dir/train.record"
 
 # train on local machine
-function krones_train(){
+function krones_train() {
   tf_model_dir;
   python object_detection/train.py \
                          --logtostderr \
@@ -49,7 +55,7 @@ function krones_eval() {
 }
 
 # tensorboard on local machine
-function krones_tensorboard(){
+function krones_tensorboard() {
   tf_model_dir;
   tensorboard --logdir=${krones_model_dir}
 }
@@ -57,17 +63,15 @@ function krones_tensorboard(){
 # export frozen weights on local machine
 # usage:
 # krones_export_local CKPT_NUMBER
-function krones_export(){
+function krones_export() {
   # go to tensorflow/models/reseaerch directory
   tf_model_dir;
-  # move old frozen weights
-  mv -f ${krones_models}/frozen_graph ${krones_frozen}_old
   # get new optimized frozen weights
   python object_detection/export_inference_graph.py \
                          --input_type=image_tensor \
                          --pipeline_config_path=${krones_config} \
                          --trained_checkpoint_prefix=${krones_train_dir}/model.ckpt-$1 \
-                         --output_directory=${krones_frozen}
+                         --output_directory=${krones_frozen}_$1
 }
 
 # create new CSV
@@ -79,7 +83,13 @@ function krones_generate_csv (){
 }
 
 # create new TFRecord
+# usage: 
+#   krones_generate_tfrecord FOLDER_NUMBER
 function krones_generate_tfrecord (){
+  # set the folder which contains dataset
+  krones_folder_number=$1;
+  echo ${krones_folder_number};
+  # generate 
   krones_generate_csv;
   python ${krones_dataset}/scripts/generate_tfrecord.py \
                               --dir=${krones_train_dataset} \
@@ -87,10 +97,31 @@ function krones_generate_tfrecord (){
                               --output=${krones_train_record}
 }
 
-# perform inference 
+# create data folder for GCML training
+# usage: 
+#   krones_generate_gcml MODEL_NUMBER
+function krones_generate_gcml() {
+  # copy TFRecord file
+  cp ${krones_train_record} ${gcml_train_record}
+  # copy labels file
+  cp ${krones_train_label} ${gcml_data_dir}
+  # copy frozen weights
+  cp ${krones_frozen}_$1/model.ckpt.* ${gcml_data_dir}
+  # copy checkpoint
+  cp ${krones_frozen}_$1/checkpoint ${gcml_data_dir}
+  # copy graph
+  cp ${krones_frozen}_$1/frozen_inference_graph.pb ${gcml_data_dir}
+  # success
+  echo "Successfully copied GCML data"
+}
+
+# perform inference CKPT_NUMBER
 function krones_inference (){
   tf_model_dir;
-  python object_detection/detection_pipeline.py
+  echo "using frozen_graph_"$1;
+  python object_detection/detection_pipeline.py \
+                            --CKPT_NUMBER=$1 \
+                            --folder=$2/
 }
 
 # get new trained model from google cloud ML
@@ -103,6 +134,8 @@ function krones_get_model_gcml() {
  gsutil cp gs://${gcml_krones_train_dir}/model.ckpt-${1}* ${krones_train_dir} 
  # copy checkpoint file
  gsutil cp gs://${gcml_krones_train_dir}/checkpoint ${krones_train_dir}
+ # generate frozen graph
+ krones_export $1
 }
 
 # copy updated trained model on google cloud ML
@@ -118,7 +151,7 @@ function krones_set_model_gcml() {
 # train network on google cloud ML
 function krones_train_gcml() {
   # update model on gcml before starting new training
-  krones_set_model_gcml;
+  # krones_set_model_gcml;
   # go to models/research/
   tf_model_dir;
   # packaging
@@ -127,16 +160,22 @@ function krones_train_gcml() {
   cd slim; python setup.py sdist; cd ..
   # start gcml training
   gcloud ml-engine jobs submit training object_detection_`date +%s` \
-                       --job-dir=gs://${gcml_krones_train_dir} \
+            		       --job-dir=gs://${gcml_krones_train_dir} \
                        --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz \
                        --module-name object_detection.train \
-                       --region us-central1 --config ${gcml_yml} \
+                       --region us-central1 \
+		                   --config ${gcml_yml} \
                        -- \
                        --train_dir=gs://${gcml_krones_train_dir} \
                        --pipeline_config_path=gs://${gcml_krones_config};
 }
 
 # get trained model and create frozen model
-krones_export_gcml(){
+function krones_export_gcml(){
   krones_get_model_gcml ${1} && krones_export_local ${1};
+}
+
+# tensorboard on krones google cloud ML
+function tensorboard_gcml(){
+  tensorboard --logdir=gs://krones_pet_bottles
 }
