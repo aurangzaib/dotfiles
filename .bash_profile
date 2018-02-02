@@ -26,7 +26,7 @@ export JDK_HOME=$(/usr/libexec/java_home)
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,variables,aliases,functions,extra,utilities,krones}; do
+for file in ~/.{path,bash_prompt,exports,variables,utilities_old,functions,extra,utilities,krones}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -80,7 +80,7 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 # anaconda python 3.5.2
-export PATH="/Users/siddiqui/miniconda/envs/siddiqui/bin:$PATH"
+export PATH="/Users/siddiqui/miniconda/envs/siddiqui_p352/bin:$PATH"
 export PATH="/usr/local/opt/opencv3/bin:$PATH"
 source activate siddiqui_p352
 

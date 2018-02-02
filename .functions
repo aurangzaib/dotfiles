@@ -186,3 +186,13 @@ function bash_update () {
   # cd to previous working directory
   cd $cwd;
 }
+
+# open source tree at current directory
+function sth() {
+  open -a SourceTree .
+}
+
+# create a GIF from video
+function video2gif () {
+  ffmpeg -i $1 -s 320x280 -pix_fmt rgb8 -r 18 -f gif - | gifsicle --optimize=3 --delay=3 > out.gif
+} 

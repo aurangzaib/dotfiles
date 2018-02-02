@@ -9,7 +9,7 @@ krones_config="$krones_models/pipeline.config"
 krones_frozen="${krones_models}/frozen_graph"
 krones_data="$krones_dataset/data"
 krones_train_name="train_$krones_folder_number"
-
+krones_eval_name=""eval_$krones_folder_number""
 # train
 krones_train_annotations="$krones_dataset_dir/train/annotations"
 krones_train_dataset="$krones_dataset_dir/train/images"
@@ -20,9 +20,10 @@ krones_train_dir="$krones_models/train"
 
 # eval
 krones_eval_annotations="$krones_dataset/dataset/eval/annotations"
-krones_eval_dataset="$krones_dataset/dataset/eval/images"
-krones_eval_record="$krones_dataset/data/eval.record"
-krones_eval_csv="$krones_dataset/data/eval.csv"
+krones_eval_dataset="$krones_dataset_dir/eval/images"
+krones_eval_record="$krones_dataset/data/$krones_eval_name.record"
+krones_eval_csv="$krones_dataset/data/$krones_train_name.csv"
+krones_eval_label="$krones_dataset/data/label_map.pbtxt"
 krones_eval_dir="$krones_models/eval"
 
 # google cloud ML 
@@ -57,7 +58,7 @@ function krones_eval() {
 # tensorboard on local machine
 function krones_tensorboard() {
   tf_model_dir;
-  tensorboard --logdir=${krones_model_dir}
+  tensorboard --logdir=${krones_models}
 }
 
 # export frozen weights on local machine
@@ -86,9 +87,15 @@ function krones_inference (){
 # create new CSV
 function krones_generate_csv (){
   tf_model_dir; p2;
-  python ${krones_dataset}/scripts/xml_to_csv.py \
-                              --xml_dir=${krones_train_annotations} \
-                              --csv=${krones_train_csv}
+  if [ "$1" = "eval" ]; then 
+    python ${krones_dataset}/scripts/xml_to_csv.py \
+                                --xml_dir=${krones_eval_annotations} \
+                                --csv=${krones_eval_csv}
+  else
+    python ${krones_dataset}/scripts/xml_to_csv.py \
+                                --xml_dir=${krones_train_annotations} \
+                                --csv=${krones_train_csv}
+  fi
 }
 
 # create new TFRecord
@@ -98,12 +105,19 @@ function krones_generate_tfrecord (){
   # set the folder which contains dataset
   krones_folder_number=$1;
   echo ${krones_folder_number};
-  # generate 
-  krones_generate_csv;
+  # generate
+  krones_generate_csv $2;
+  if [ "$2" = "eval" ]; then
+    python ${krones_dataset}/scripts/generate_tfrecord.py \
+                                --dir=${krones_eval_dataset} \
+                                --csv=${krones_eval_csv} \
+                                --output=${krones_eval_record}
+  else
   python ${krones_dataset}/scripts/generate_tfrecord.py \
-                              --dir=${krones_train_dataset} \
-                              --csv=${krones_train_csv} \
-                              --output=${krones_train_record}
+                                --dir=${krones_train_dataset} \
+                                --csv=${krones_train_csv} \
+                                --output=${krones_train_record}
+  fi
 }
 
 # create data folder for GCML training
@@ -146,6 +160,8 @@ function krones_gcml_set() {
   gsutil rm -rf gs://${gcml_krones}/data/model.ckpt*
   # remove old checkpoint
   gsutil rm -rf gs://${gcml_krones}/data/checkpoint
+  # remove old graph
+  gsutil rm -rf gs://${gcml_krones}/data/frozen_inference_graph.pb
   # copy new model and checkpoint to gcml
   gsutil cp ${gcml_data_dir}/* gs://${gcml_krones}/data
 }
@@ -173,11 +189,18 @@ function krones_gcml_train() {
 }
 
 # get trained model and create frozen model
-function krones_gcml_export(){
+function krones_gcml_export() {
   krones_gcml_get ${1} && krones_export ${1};
 }
 
 # tensorboard on krones google cloud ML
-function tensorboard_gcml(){
+function tensorboard_gcml() {
   tensorboard --logdir=gs://krones_pet_bottles
+}
+
+# open generate_tfrecord.p in macOS TextEdit for quick editing
+function krones_edit_tfrecord() {
+  tf_model_dir;
+  cd krones/scripts;
+  open -e generate_tfrecord.py
 }
