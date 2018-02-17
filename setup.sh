@@ -11,6 +11,7 @@ ln -s .dotfiles/.inputrc .inputrc
 ln -s .dotfiles/.krones .krones
 ln -s .dotfiles/.wgetrc .wgetrc
 ln -s .dotfiles/.bashrc .bashrc
+ln -s .dotfiles/battery_profile.sh .battery_profile.sh
 
 # update the bash profile
 cd; source .bash_profile; cd;
@@ -53,3 +54,6 @@ defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
 
 # clean all cache files of brew, node, conda
 cleanup; bash_update
+
+# don't rearrange spaces based on recent
+defaults write com.apple.dock mru-spaces -bool false

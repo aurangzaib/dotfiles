@@ -37,6 +37,7 @@ gcml_data_dir="$krones_dataset/data_gcml"
 gcml_train_record="$gcml_data_dir/train.record"
 
 # train on local machine
+# USAGE: krones_train
 function krones_train() {
   tf_model_dir;
   python object_detection/train.py \
@@ -46,6 +47,7 @@ function krones_train() {
 }
 
 # evaluate on local machine
+# USAGE: krones_eval
 function krones_eval() {
   tf_model_dir;
   python object_detection/eval.py \
@@ -63,7 +65,7 @@ function krones_tensorboard() {
 
 # export frozen weights on local machine
 # usage:
-# krones_export_local CKPT_NUMBER
+# krones_export CKPT_NUMBER
 function krones_export() {
   # go to tensorflow/models/reseaerch directory
   tf_model_dir;

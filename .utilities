@@ -48,7 +48,7 @@ alias npm-packages="npmg typescript; npmg eslint; npmg gulp; npmg ncu; npmg node
 alias pdf-merge="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py"
 
 # youtube to mp3
-alias ytm="cd && youtube-dl --extract-audio --audio-format mp3 --prefer-ffmpeg --audio-quality 0 --embed-thumbnail"
+alias ytm="cd && youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 --embed-thumbnail --no-playlist"
 
 # open dotfiles in VSCode
 alias editdt="cd; code -r .dotfiles"
@@ -139,3 +139,9 @@ alias p2="source activate siddiqui_p279"
 
 # create conda environment
 alias create_conda_env="conda env create -f "
+
+# battery log update
+alias battery_log_update="cd; bash .battery_profile.sh"
+
+# battery log view
+alias battery_log_view="cd; cat .battery_profile.csv"
