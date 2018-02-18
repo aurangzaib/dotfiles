@@ -9,6 +9,6 @@
 		<string>/Users/siddiqui/.battery_profile.sh</string>
 	</array>
 	<key>StartInterval</key>
-	<integer>18000</integer>
+	<integer>7200</integer>
 </dict>
 </plist>
