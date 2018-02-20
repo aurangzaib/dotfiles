@@ -1,7 +1,7 @@
 ########## KRONES TENSOR OBJECT DETECTION ##########
 
 # data and model folders
-krones_folder_number="complete"
+krones_folder_number="prepare"
 krones_dataset="$tf_dir/krones"
 krones_dataset_dir="$krones_dataset/dataset_$krones_folder_number"
 krones_models="$krones_dataset/models/ssd_mobilenet_v1_coco"
