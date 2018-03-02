@@ -1,7 +1,7 @@
 ########## KRONES TENSOR OBJECT DETECTION ##########
 
 # data and model folders
-tf_dir_krones="/Users/siddiqui/Documents/Projects/siddiqui-master-thesis/model"
+tf_dir_krones="/Users/siddiqui/Documents/Projects/siddiqui-master-thesis/neural_network"
 alias tf_model_dir="prjdir; cd $tf_dir_krones; py_path"
 alias test_tf="tf_model_dir && g_protobuff && python $model_test"
 krones_folder_number="complete"
@@ -42,6 +42,8 @@ gcml_train_record="$gcml_data_dir/train.record"
 # train on local machine
 # USAGE: krones_train
 function krones_train() {
+  echo "config file used: ${krones_config}";
+  echo "train dir used: ${krones_train_dir}"
   tf_model_dir;
   python object_detection/train.py \
                          --logtostderr \
@@ -84,7 +86,7 @@ function krones_export() {
 function krones_inference (){
   tf_model_dir;
   echo "using frozen_graph_"$1;
-  python pipeline/scripts/detection_pipeline.py \
+  python pipeline/scripts/detection.py \
                             --CKPT_NUMBER=$1 \
                             --folder=$2/
 }
@@ -93,11 +95,11 @@ function krones_inference (){
 function krones_generate_csv (){
   tf_model_dir; p2;
   if [ "$1" = "eval" ]; then 
-    python ${krones_dataset}/scripts/xml_to_csv.py \
+    python ${krones_dataset}/scripts/csv_generation.py \
                                 --xml_dir=${krones_eval_annotations} \
                                 --csv=${krones_eval_csv}
   else
-    python ${krones_dataset}/scripts/xml_to_csv.py \
+    python ${krones_dataset}/scripts/csv_generation.py \
                                 --xml_dir=${krones_train_annotations} \
                                 --csv=${krones_train_csv}
   fi
@@ -113,12 +115,12 @@ function krones_generate_tfrecord (){
   # generate
   krones_generate_csv $2;
   if [ "$2" = "eval" ]; then
-    python ${krones_dataset}/scripts/generate_tfrecord.py \
+    python ${krones_dataset}/scripts/tfrecord_generation.py \
                                 --dir=${krones_eval_dataset} \
                                 --csv=${krones_eval_csv} \
                                 --output=${krones_eval_record}
   else
-  python ${krones_dataset}/scripts/generate_tfrecord.py \
+  python ${krones_dataset}/scripts/tfrecord_generation.py \
                                 --dir=${krones_train_dataset} \
                                 --csv=${krones_train_csv} \
                                 --output=${krones_train_record}
