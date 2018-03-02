@@ -45,7 +45,7 @@ function krones_train() {
   echo "config file used: ${krones_config}";
   echo "train dir used: ${krones_train_dir}"
   tf_model_dir;
-  python object_detection/train.py \
+  python detection_framework/train.py \
                          --logtostderr \
                          --pipeline_config_path=${krones_config} \
                          --train_dir=${krones_train_dir}
@@ -55,7 +55,7 @@ function krones_train() {
 # USAGE: krones_eval
 function krones_eval() {
   tf_model_dir;
-  python object_detection/eval.py \
+  python detection_framework/eval.py \
                        --logtostderr \
                        --pipeline_config_path=${krones_config} \
                        --checkpoint_dir=${krones_train_dir}
@@ -75,7 +75,7 @@ function krones_export() {
   # go to tensorflow/models/reseaerch directory
   tf_model_dir;
   # get new optimized frozen weights
-  python object_detection/export_inference_graph.py \
+  python detection_framework/export_inference_graph.py \
                          --input_type=image_tensor \
                          --pipeline_config_path=${krones_config} \
                          --trained_checkpoint_prefix=${krones_train_dir}/model.ckpt-$1 \
@@ -86,7 +86,7 @@ function krones_export() {
 function krones_inference (){
   tf_model_dir;
   echo "using frozen_graph_"$1;
-  python pipeline/scripts/detection.py \
+  python detection_pipeline/scripts/detection.py \
                             --CKPT_NUMBER=$1 \
                             --folder=$2/
 }
