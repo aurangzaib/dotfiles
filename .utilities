@@ -118,9 +118,6 @@ alias sdc2_sim="cd $prj_dataset && open sdc_term2_sim.app"
 # usage: image-reize 320x240 image.jpg
 alias img_resize="mogrify -resize "
 
-# go to tensorflow > models > research > object_detection
-alias tf_model_dir="prjdir; cd $tf_dir; py_path"
-
 # all files in directory to lower case
 alias folder_lowercase="rename -f 'y/A-Z/a-z/' *"
 
@@ -129,9 +126,6 @@ alias pt="python"
 
 # go back two directories
 alias cd2="cd .. && cd .."
-
-# test TensorFlow installation
-alias test_tf="tf_model_dir && g_protobuff && python $model_test"
 
 # activate python
 alias p3="source activate siddiqui_p352"

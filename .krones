@@ -1,8 +1,11 @@
 ########## KRONES TENSOR OBJECT DETECTION ##########
 
 # data and model folders
-krones_folder_number="prepare"
-krones_dataset="$tf_dir/krones"
+tf_dir_krones="/Users/siddiqui/Documents/Projects/siddiqui-master-thesis/model"
+alias tf_model_dir="prjdir; cd $tf_dir_krones; py_path"
+alias test_tf="tf_model_dir && g_protobuff && python $model_test"
+krones_folder_number="complete"
+krones_dataset="$tf_dir_krones/pipeline"
 krones_dataset_dir="$krones_dataset/dataset_$krones_folder_number"
 krones_models="$krones_dataset/models/ssd_mobilenet_v1_coco"
 krones_config="$krones_models/pipeline.config"
@@ -28,7 +31,7 @@ krones_eval_dir="$krones_models/eval"
 
 # google cloud ML 
 gcml_yml="$krones_models/gcml.yml"
-gcml_krones="krones_pet_bottles_2"
+gcml_krones="siddiqui-krones"
 gcml_krones_packages="dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz"
 gcml_krones_config="$gcml_krones/data/pipeline_gcml.config"
 gcml_krones_train_dir="$gcml_krones/train"
@@ -81,7 +84,7 @@ function krones_export() {
 function krones_inference (){
   tf_model_dir;
   echo "using frozen_graph_"$1;
-  python object_detection/detection_pipeline.py \
+  python pipeline/scripts/detection_pipeline.py \
                             --CKPT_NUMBER=$1 \
                             --folder=$2/
 }
@@ -102,7 +105,7 @@ function krones_generate_csv (){
 
 # create new TFRecord
 # usage: 
-#   krones_generate_tfrecord FOLDER_NUMBER
+#   krones_generate_tfrecord FOLDER_NAME
 function krones_generate_tfrecord (){
   # set the folder which contains dataset
   krones_folder_number=$1;
