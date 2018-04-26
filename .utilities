@@ -108,7 +108,7 @@ alias soundcloud="scdl -l"
 alias source_tree="open -a SourceTree"
 
 # lnr key
-alias lnr_key="echo H4rdlyUgly"
+alias lnr_key="echo S3curityP4ass"
 
 # sdc simulators
 alias sdc1_sim="cd $prj_dataset && open sdc_term1_sim.app"

@@ -12,7 +12,8 @@ krones_config="$krones_models/pipeline.config"
 krones_frozen="${krones_models}/frozen_graph"
 krones_data="$krones_dataset/data"
 krones_train_name="train_$krones_folder_number"
-krones_eval_name=""eval_$krones_folder_number""
+krones_eval_name="eval_$krones_folder_number"
+
 # train
 krones_train_annotations="$krones_dataset_dir/train/annotations"
 krones_train_dataset="$krones_dataset_dir/train/images"
@@ -22,10 +23,10 @@ krones_train_label="$krones_dataset/data/label_map.pbtxt"
 krones_train_dir="$krones_models/train"
 
 # eval
-krones_eval_annotations="$krones_dataset/dataset/eval/annotations"
+krones_eval_annotations="$krones_dataset_dir/eval/annotations"
 krones_eval_dataset="$krones_dataset_dir/eval/images"
 krones_eval_record="$krones_dataset/data/$krones_eval_name.record"
-krones_eval_csv="$krones_dataset/data/$krones_train_name.csv"
+krones_eval_csv="$krones_dataset/data/$krones_eval_name.csv"
 krones_eval_label="$krones_dataset/data/label_map.pbtxt"
 krones_eval_dir="$krones_models/eval"
 
@@ -45,7 +46,7 @@ function krones_train() {
   echo "config file used: ${krones_config}";
   echo "train dir used: ${krones_train_dir}"
   tf_model_dir;
-  python detection_framework/train.py \
+  python object_detection/train.py \
                          --logtostderr \
                          --pipeline_config_path=${krones_config} \
                          --train_dir=${krones_train_dir}
@@ -55,7 +56,7 @@ function krones_train() {
 # USAGE: krones_eval
 function krones_eval() {
   tf_model_dir;
-  python detection_framework/eval.py \
+  python object_detection/eval.py \
                        --logtostderr \
                        --pipeline_config_path=${krones_config} \
                        --checkpoint_dir=${krones_train_dir}
@@ -75,7 +76,7 @@ function krones_export() {
   # go to tensorflow/models/reseaerch directory
   tf_model_dir;
   # get new optimized frozen weights
-  python detection_framework/export_inference_graph.py \
+  python object_detection/export_inference_graph.py \
                          --input_type=image_tensor \
                          --pipeline_config_path=${krones_config} \
                          --trained_checkpoint_prefix=${krones_train_dir}/model.ckpt-$1 \
@@ -86,7 +87,7 @@ function krones_export() {
 function krones_inference (){
   tf_model_dir;
   echo "using frozen_graph_"$1;
-  python detection_pipeline/scripts/detection.py \
+  python pipeline/scripts/detection.py \
                             --CKPT_NUMBER=$1 \
                             --folder=$2/
 }
@@ -95,10 +96,12 @@ function krones_inference (){
 function krones_generate_csv (){
   tf_model_dir; p2;
   if [ "$1" = "eval" ]; then 
+    echo "eval csv is used";
     python ${krones_dataset}/scripts/csv_generation.py \
                                 --xml_dir=${krones_eval_annotations} \
                                 --csv=${krones_eval_csv}
   else
+    echo "train csv is used";
     python ${krones_dataset}/scripts/csv_generation.py \
                                 --xml_dir=${krones_train_annotations} \
                                 --csv=${krones_train_csv}
@@ -115,11 +118,13 @@ function krones_generate_tfrecord (){
   # generate
   krones_generate_csv $2;
   if [ "$2" = "eval" ]; then
+    echo "eval is used";
     python ${krones_dataset}/scripts/tfrecord_generation.py \
                                 --dir=${krones_eval_dataset} \
                                 --csv=${krones_eval_csv} \
                                 --output=${krones_eval_record}
   else
+  echo "train is used";
   python ${krones_dataset}/scripts/tfrecord_generation.py \
                                 --dir=${krones_train_dataset} \
                                 --csv=${krones_train_csv} \
@@ -202,12 +207,12 @@ function krones_gcml_export() {
 
 # tensorboard on krones google cloud ML
 function tensorboard_gcml() {
-  tensorboard --logdir=gs://krones_pet_bottles
+  tensorboard --logdir=gs://siddiqui-krones
 }
 
 # open generate_tfrecord.p in macOS TextEdit for quick editing
 function krones_edit_tfrecord() {
   tf_model_dir;
-  cd krones/scripts;
-  open -e generate_tfrecord.py
+  cd pipeline/scripts;
+  open -e tfrecord_generation.py
 }
