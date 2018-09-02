@@ -125,12 +125,6 @@ alias p2="source activate siddiqui_p279"
 # create conda environment
 alias create_conda_env="conda env create -f "
 
-# battery log update
-alias battery_log_update="cd; bash .battery_profile.sh"
-
-# battery log view
-alias battery_log_view="cd; cat .battery_profile.csv"
-
 # list outdated pip packages in python env
 alias pip_outdated="source activate siddiqui_p352 && pip list --outdated --not-required"
 
@@ -141,3 +135,6 @@ alias bf_stop="sudo launchctl stop $battery_profile"
 alias bf_load="launchctl load -w $battery_profile"
 alias bf_unload="launchctl unload -w $battery_profile"
 alias battery_profile_restart="bf_stop && bf_unload && bf_load && bf_start"
+alias battery_profile_show="python .dotfiles/battery_profile.py"
+alias battery_profile_update="cd; bash .battery_profile.sh"
+alias battery_profile_csv="cd; cat .battery_profile.csv"
