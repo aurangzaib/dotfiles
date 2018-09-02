@@ -196,3 +196,33 @@ function sth() {
 function video2gif () {
   ffmpeg -i $1 -s 320x280 -pix_fmt rgb8 -r 18 -f gif - | gifsicle --optimize=3 --delay=3 > out.gif
 } 
+
+# clean the mac
+function cleanmac() {
+  echo 'clean brew'; brew cleanup; brew prune; brew cask cleanup
+  echo 'clean cask'; brew cask cleanup; 
+  echo 'clean conda'; conda clean --all -y;
+  # go to caches and remove pip
+  cd /Users/siddiqui/Library/Caches;
+  rm -rf pip;
+  cd;
+  echo 'clean trash';
+  sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl;
+  echo 'mac is clean now';
+  killall Finder; 
+  cd;
+}
+
+# clean the mac + LS 
+function cleanmac_hard() {
+  cleanmac;
+  # go to caches and remove pip
+  cd /Users/siddiqui/Library/Caches;
+  rm -rf pip;
+  echo "clean LS files";
+  cd;
+  /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;
+  echo "system is clean now";
+  killall Finder;
+  cd;
+}

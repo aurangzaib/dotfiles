@@ -1,7 +1,9 @@
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-# Updating pip seems to be very error prone; not using currently1
+# Updating pip seems to be very error prone; not using currently
+
 alias pip_update="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
-alias update='cd && sudo softwareupdate -i -a; conda upgrade --all -y; brew update; brew upgrade; cleanup'
+alias update_mac='cd && sudo softwareupdate -i -a; cd; conda upgrade --all -y; brew update; brew upgrade; cleanmac'
+alias mac_update="update_mac"
 
 alias git-cred="git config --global credential.helper osxkeychain"
 alias git-line-ending="git config --global core.autocrlf input"
@@ -33,9 +35,6 @@ alias sudo='sudo '
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
-# Clean up LaunchServices to remove duplicates in the “Open With” menu
-alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
-
 # View HTTP traffic
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
@@ -49,7 +48,7 @@ alias pdf-merge="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/R
 
 # youtube to mp3
 alias ytm="cd && youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 --embed-thumbnail --no-playlist"
-
+alias ytv="cd && youtube-dl -f mp4 --embed-thumbnail --no-playlist"
 # open dotfiles in VSCode
 alias editdt="cd; code -r .dotfiles"
 
@@ -82,14 +81,6 @@ alias quit_all="open -a quit"
 
 # reset dock
 alias reset_dock="defaults write com.apple.Dock autohide-delay -float 0 && killall Dock"
-
-# Recursively delete anaconda cache files
-alias cleanup="echo 'clean brew'; brew cleanup; echo 'clean cask'; brew cask cleanup; echo 'clean conda'; conda clean --all -y; brew prune"
-
-# Empty the Trash on all mounted volumes and the main HDD
-# Also, clear Apple’s System Logs to improve shell startup speed
-alias empty_trash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
-alias trash_clean="empty_trash"
 
 # check battery status
 alias battery_check="GetBatteryPercentage"
@@ -139,3 +130,6 @@ alias battery_log_update="cd; bash .battery_profile.sh"
 
 # battery log view
 alias battery_log_view="cd; cat .battery_profile.csv"
+
+# list outdated pip packages in python env
+alias pip_outdated="source activate siddiqui_p352 && pip list --outdated --not-required"

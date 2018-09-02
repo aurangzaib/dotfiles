@@ -73,7 +73,7 @@ function krones_tensorboard() {
 # usage:
 # krones_export CKPT_NUMBER
 function krones_export() {
-  # go to tensorflow/models/reseaerch directory
+  # go to model directory
   tf_model_dir;
   # get new optimized frozen weights
   python object_detection/export_inference_graph.py \
@@ -89,7 +89,7 @@ function krones_inference (){
   echo "using frozen_graph_"$1;
   python pipeline/scripts/detection.py \
                             --CKPT_NUMBER=$1 \
-                            --folder=$2/
+                            --folder=$2
 }
 
 # create new CSV
@@ -190,11 +190,11 @@ function krones_gcml_train() {
   cd slim; python setup.py sdist; cd ..
   # start gcml training
   gcloud ml-engine jobs submit training object_detection_`date +%s` \
-            		       --job-dir=gs://${gcml_krones_train_dir} \
+                       --job-dir=gs://${gcml_krones_train_dir} \
                        --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz \
                        --module-name object_detection.train \
                        --region us-central1 \
-		                   --config ${gcml_yml} \
+                       --config ${gcml_yml} \
                        -- \
                        --train_dir=gs://${gcml_krones_train_dir} \
                        --pipeline_config_path=gs://${gcml_krones_config};

@@ -81,11 +81,10 @@ export PATH="/usr/local/sbin:$PATH"
 
 # anaconda python 3.5.2
 export PATH="/Users/siddiqui/miniconda/envs/siddiqui_p352/bin:$PATH"
-export PATH="/usr/local/opt/opencv3/bin:$PATH"
 source activate siddiqui_p352
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/siddiqui/google-cloud-sdk/path.bash.inc' ]; then source '/Users/siddiqui/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/Users/siddiqui/.google-cloud-sdk/path.bash.inc' ]; then source '/Users/siddiqui/.google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/siddiqui/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/siddiqui/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '/Users/siddiqui/.google-cloud-sdk/completion.bash.inc' ]; then source '/Users/siddiqui/.google-cloud-sdk/completion.bash.inc'; fi
