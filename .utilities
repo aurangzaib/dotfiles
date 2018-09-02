@@ -134,9 +134,10 @@ alias battery_log_view="cd; cat .battery_profile.csv"
 # list outdated pip packages in python env
 alias pip_outdated="source activate siddiqui_p352 && pip list --outdated --not-required"
 
-# load battery profiler
-alias battery_profile_load="launchctl load -w /Library/LaunchDaemons/com.spaceship.macbook.battery_profile_update.plist"
-alias battery_profile_unload="launchctl unload -w /Library/LaunchDaemons/com.spaceship.macbook.battery_profile_update.plist"
-alias battery_profile_start="sudo launchctl start /Library/LaunchDaemons/com.spaceship.macbook.battery_profile_update.plist"
-alias battery_profile_stop="sudo launchctl stop /Library/LaunchDaemons/com.spaceship.macbook.battery_profile_update.plist"
-alias battery_profile_restart="battery_profile_stop && battery_profile_unload && battery_profile_load && battery_profile_start"
+# battery profile
+battery_profile="/Library/LaunchDaemons/com.spaceship.macbook.battery_profile_update.plist"
+alias bf_start="sudo launchctl start $battery_profile"
+alias bf_stop="sudo launchctl stop $battery_profile"
+alias bf_load="launchctl load -w $battery_profile"
+alias bf_unload="launchctl unload -w $battery_profile"
+alias battery_profile_restart="bf_stop && bf_unload && bf_load && bf_start"
