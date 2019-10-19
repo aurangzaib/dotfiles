@@ -80,8 +80,8 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 # anaconda python 3.5.2
-export PATH="/Users/siddiqui/miniconda/envs/siddiqui_p352/bin:$PATH"
-source activate siddiqui_p352
+# export PATH="/Users/siddiqui/miniconda/envs/siddiqui_p352/bin:$PATH"
+# source activate siddiqui_p352
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/siddiqui/.google-cloud-sdk/path.bash.inc' ]; then source '/Users/siddiqui/.google-cloud-sdk/path.bash.inc'; fi

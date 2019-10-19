@@ -199,8 +199,8 @@ function video2gif () {
 
 # clean the mac
 function cleanmac() {
-  echo 'clean brew'; brew cleanup; brew prune
-  echo 'clean conda'; conda clean --all -y;
+  echo 'clean brew'; brew cleanup;
+  # echo 'clean conda'; conda clean --all -y;
   # go to caches and remove pip
   cd /Users/siddiqui/Library/Caches;
   rm -rf pip;
