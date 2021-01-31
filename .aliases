@@ -2,7 +2,7 @@
 # Updating pip seems to be very error prone; not using currently
 
 alias pip_update="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
-alias update_mac='cd && sudo softwareupdate -i -a; cd; brew update; brew upgrade; cleanmac' # conda upgrade --all -y
+alias update_mac='cd && sudo softwareupdate -i -a; cd; brew update; brew upgrade; cleanmac'
 alias mac_update="update_mac"
 
 alias git-cred="git config --global credential.helper osxkeychain"
@@ -30,7 +30,6 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
-
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
@@ -90,7 +89,7 @@ alias wifi_list="airport -s"
 
 # IP addresses
 alias ip_global="dig +short myip.opendns.com @resolver1.opendns.com"
-alias ip_local="ipconfig getifaddr en0"
+alias ip="ipconfig getifaddr en0"
 
 # soundcloud download
 alias soundcloud="scdl -l"
@@ -119,14 +118,14 @@ alias pt="python"
 alias cd2="cd .. && cd .."
 
 # activate python
-alias p3="source activate siddiqui_p352"
+alias p3="source activate siddiqui"
 alias p2="source activate siddiqui_p279"
 
 # create conda environment
 alias create_conda_env="conda env create -f "
 
 # list outdated pip packages in python env
-alias pip_outdated="source activate siddiqui_p352 && pip list --outdated --not-required"
+alias pip_outdated="source activate siddiqui && pip list --outdated --not-required"
 
 # battery profile
 battery_profile="/Library/LaunchDaemons/com.spaceship.macbook.battery_profile_update.plist"
@@ -138,3 +137,11 @@ alias battery_profile_restart="bf_stop && bf_unload && bf_load && bf_start"
 alias battery_profile_show="python .dotfiles/battery_profile.py"
 alias battery_profile_update="cd; bash .battery_profile.sh"
 alias battery_profile_csv="cd; cat .battery_profile.csv"
+
+# Raspberry pi 4:
+alias ssh_pi="ssh pi@192.168.178.2"
+alias sshfs_pi="sshfs pi@192.168.178.2: Raspberry"
+alias sshfs_pi_unmount="fusermount -u /home/Siddiqui/Raspberry"
+
+# Show connected devices
+alias show_connected_devices="nmap -sP 192.168.178.0/24"

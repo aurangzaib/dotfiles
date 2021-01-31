@@ -26,7 +26,7 @@ export PATH="/usr/local/bin:$PATH"
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,variables,utilities_old,functions,extra,utilities,krones}; do
+for file in ~/.{path,bash_prompt,exports,variables,aliases_old,functions,extra,aliases,krones}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -79,12 +79,29 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-# anaconda python 3.5.2
-# export PATH="/Users/siddiqui/miniconda/envs/siddiqui_p352/bin:$PATH"
-# source activate siddiqui_p352
+# conda python
+export PATH="/Users/Siddiqui/Miniconda/bin:$PATH"
+export PATH="/Users/Siddiqui/Miniconda/envs/siddiqui/bin:$PATH"
+source activate siddiqui
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/siddiqui/.google-cloud-sdk/path.bash.inc' ]; then source '/Users/siddiqui/.google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/siddiqui/.google-cloud-sdk/completion.bash.inc' ]; then source '/Users/siddiqui/.google-cloud-sdk/completion.bash.inc'; fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/Siddiqui/Miniconda/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/Siddiqui/Miniconda/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/Siddiqui/Miniconda/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/Siddiqui/Miniconda/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
