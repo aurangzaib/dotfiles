@@ -20,8 +20,8 @@ export PATH="/usr/local/bin:$PATH"
 
 # JRE and JDK
 # after installing jdk & jre from oracle site
-export JAVA_HOME=$(/usr/libexec/java_home)
-export JDK_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home)
+# export JDK_HOME=$(/usr/libexec/java_home)
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
