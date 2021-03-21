@@ -54,9 +54,6 @@ alias editdt="cd; code -r .dotfiles"
 # current working directory
 alias cwd="echo $PWD"
 
-# open vscode with gpu
-alias code="code --force-gpu-rasterization -r"
-
 #project folder
 alias prjdir="cd $project_directory_path"
 
@@ -140,8 +137,16 @@ alias battery_profile_csv="cd; cat .battery_profile.csv"
 
 # Raspberry pi 4:
 alias ssh_pi="ssh pi@192.168.178.2"
-alias sshfs_pi="sshfs pi@192.168.178.2: Raspberry"
-alias sshfs_pi_unmount="fusermount -u /home/Siddiqui/Raspberry"
+alias sshfs_pi="sshfs pi@192.168.178.2: Remote"
+alias sshfs_pi_unmount="fusermount -u /home/Siddiqui/Remote"
 
 # Show connected devices
 alias show_connected_devices="nmap -sP 192.168.178.0/24"
+
+# Make Apple Mouse fast
+alias mac_mouse_speed="defaults write -g com.apple.trackpad.scaling -float 20.0"
+
+# Restart Logitech Options Daemon
+alias restart_logi="kill $(ps aux | grep LogiMgrDaemon.app | awk 'FNR == 1 {print $2}')"
+alias logi_restart="restart_logi"
+
