@@ -147,6 +147,7 @@ alias show_connected_devices="nmap -sP 192.168.178.0/24"
 alias mac_mouse_speed="defaults write -g com.apple.trackpad.scaling -float 20.0"
 
 # Restart Logitech Options Daemon
+# https://apple.stackexchange.com/a/412345/258866
 alias restart_logi="kill $(ps aux | grep LogiMgrDaemon.app | awk 'FNR == 1 {print $2}')"
 alias logi_restart="restart_logi"
 

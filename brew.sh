@@ -66,25 +66,25 @@ brew cask install java8
 brew install bazel
 
 # Userland Tools
-brew cask install google-chrome
+brew cask install 4k-video-downloader
+brew cask install visual-studio-code
+brew cask install microsoft-teams
+brew cask install microsoft-edge
 brew cask install sourcetree
-brew cask install skype
-brew cask install clion
 brew cask install pycharm
 brew cask install webstorm
-brew cask install visual-studio-code
 brew cask install postman
 brew cask install shady
 brew cask install docker
 brew cask install slack
-brew cask install virtualbox
 brew cask install macdown
+brew install soundcloud-dl
+brew cask install whatsapp
+brew cask install macdown
+brew install youtube-dl
 brew cask install iina
 brew install docker
-brew cask install macdown
-brew cask install whatsapp
-brew install youtube-dl
-brew install soundcloud-dl
+brew install shifty
 brew install vlc
 
 # back to root folder

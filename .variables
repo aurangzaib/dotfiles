@@ -2,7 +2,7 @@
 brew_install="https://raw.githubusercontent.com/Homebrew/install/master/install"
 
 # projects directory
-project_directory_path="/Users/Siddiqui/Documents/03—Projects"
+project_directory_path="/Users/Siddiqui/Documents/03—Work/00—Projects"
 
 # project dataset directory
 prj_dataset="/Users/siddiqui/Documents/Projects/datasets/"
