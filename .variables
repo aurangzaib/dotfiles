@@ -4,18 +4,3 @@ brew_install="https://raw.githubusercontent.com/Homebrew/install/master/install"
 # projects directory
 project_directory_path="/Users/Siddiqui/Documents/03—Work/00—Projects"
 
-# project dataset directory
-prj_dataset="/Users/siddiqui/Documents/Projects/datasets/"
-
-# tensorflow models research dir
-tf_dir="/Users/siddiqui/Documents/Projects/tensorflow/models/research"
-
-# tensorflow model test script
-model_test="object_detection/builders/model_builder_test.py"
-
-# path variables for racoon dataset
-raccoon_models="$tf_dir/dataset_raccoon/models/ssd_mobilenet_v1_pets"
-config_racoon="$raccoon_models/ssd_mobilenet_v1_pets.config"
-checkpoint_racoon="$raccoon_models/training/model.ckpt-116"
-train_racoon="$raccoon_models/training"
-eval_racoon="$raccoon_models/eval"

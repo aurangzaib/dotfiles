@@ -43,6 +43,7 @@ brew install binutils
 brew install nmap
 brew install pngcheck
 brew install sqlmap
+brew install rsync
 
 # Dev Tools
 brew install qt
@@ -64,6 +65,7 @@ brew install ipopt --with-openblas
 brew install node
 brew cask install java8
 brew install bazel
+brew install diff-so-fancy
 
 # Userland Tools
 brew cask install 4k-video-downloader
