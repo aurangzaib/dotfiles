@@ -47,9 +47,9 @@ alias pdf-merge="/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/R
 
 # download from youtube as an mp3 file with thumbnail
 # https://news.ycombinator.com/item?id=17460722
-alias ytm_old="cd && youtube-dl --extract-audio --audio-format m4a --audio-quality 0 --embed-thumbnail --no-playlist --prefer-ffmpeg"
-alias ytm="cd && youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 --embed-thumbnail --no-playlist --add-metadata --xattrs  "
-alias ytv="cd && youtube-dl -f mp4 --embed-thumbnail --no-playlist --prefer-ffmpeg"
+alias ytm_old="cd && cd Downloads && youtube-dl --extract-audio --audio-format m4a --audio-quality 0 --embed-thumbnail --no-playlist --prefer-ffmpeg"
+alias ytm="cd && cd Downloads && youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 --embed-thumbnail --no-playlist --add-metadata --xattrs  "
+alias ytv="cd && cd Downloads && youtube-dl -f mp4 --embed-thumbnail --no-playlist --prefer-ffmpeg"
 alias youtube_to_audio="ytm"
 alias youtube_to_video="ytv"
 
@@ -155,3 +155,9 @@ alias mac_mouse_speed="defaults write -g com.apple.trackpad.scaling -float 20.0"
 # https://apple.stackexchange.com/a/412345/258866
 alias restart_logi="kill $(ps aux | grep LogiMgrDaemon.app | awk 'FNR == 1 {print $2}')"
 alias logi_restart="restart_logi"
+
+# Rsync from mac drive to external drive 1
+alias rsync_drive_1="rsync -aE --delete Documents/* /Volumes/Home—1/02—Documents/"
+
+# Rsync from mac drive to external drive 2
+alias rsync_drive_2="rsync -aE --delete Documents/* /Volumes/Home—2/02—Documents/"
