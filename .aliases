@@ -156,8 +156,20 @@ alias mac_mouse_speed="defaults write -g com.apple.trackpad.scaling -float 20.0"
 alias restart_logi="kill $(ps aux | grep LogiMgrDaemon.app | awk 'FNR == 1 {print $2}')"
 alias logi_restart="restart_logi"
 
+# Rsync from mac drive to external drive master
+alias sync_drive_master="rsync -aE --delete $documents_directory_all_files $drive_master_documents_dir"
+
 # Rsync from mac drive to external drive 1
-alias rsync_drive_1="rsync -aE --delete Documents/* /Volumes/Home—1/02—Documents/"
+alias sync_docs_drive_1="rsync -aE --delete $documents_directory_all_files $drive_1_documents_dir"
 
 # Rsync from mac drive to external drive 2
-alias rsync_drive_2="rsync -aE --delete Documents/* /Volumes/Home—2/02—Documents/"
+alias sync_docs_drive_2="rsync -aE --delete $documents_directory_all_files $drive_2_documents_dir"
+
+# Rsync from mac drive to external drive 1 and 2
+alias sync_backups_drive_1_2="rsync -aE --delete $drive_1_backups_dir $drive_2_backups_dir"
+
+# Rsync from mac drive to external drive 1 and master
+alias sync_backups_drive_1_master="rsync -aE --delete $drive_1_backups_dir $drive_master_backups_dir"
+
+# Open Apple Notes Directory
+alias open_apple_notes_dir="open $apple_notes_directory"

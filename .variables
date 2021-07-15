@@ -1,6 +1,21 @@
-# brew script link
+# --> brew script link
 brew_install="https://raw.githubusercontent.com/Homebrew/install/master/install"
 
-# projects directory
+# --> projects directory
 project_directory_path="/Users/Siddiqui/Documents/03—Work/00—Projects"
 
+# --> Apple Notes directory
+apple_notes_directory="/Users/Siddiqui/Library/Group\ Containers/group.com.apple.notes"
+
+# --> Documents Directory All
+documents_directory_all_files="Documents/*"
+
+# --> Document Directory in External Drive 2
+drive_1_documents_dir="/Volumes/Home—1/02—Documents/"
+drive_2_documents_dir="/Volumes/Home—2/02—Documents/"
+drive_master_documents_dir="/Volumes/Siddiqui/Home/02—Documents/"
+
+# --> Backups Directory in External Drives
+drive_1_backups_dir="/Volumes/Home—1/01—Backups/"
+drive_2_backups_dir="/Volumes/Home—2/01—Backups/"
+drive_master_backups_dir="/Volumes/Siddiqui/Home/01—Backups/"
